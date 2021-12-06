@@ -1,0 +1,30 @@
+{
+  "name": "wecom-sidebar-jssdk",
+  "version": "1.0.0",
+  "description": "更高抽象的企业微信 JS-SDK 封装",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wecom-sidebar/wecom-sidebar-jssdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk/issues"
+  },
+  "homepage": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk#readme",
+  "dependencies": {
+    "compare-versions": "^4.1.1",
+    "js-cookie": "^3.0.1",
+    "qs": "^6.10.2"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.1",
+    "@types/node": "^16.11.11",
+    "@types/qs": "^6.9.7"
+  }
+}
