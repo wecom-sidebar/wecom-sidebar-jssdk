@@ -4,7 +4,8 @@
   "description": "更高抽象的企业微信 JS-SDK 封装",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext .js,.ts lib --fix"
+    "lint": "eslint --ext .js,.ts lib --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,25 @@
     "url": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk/issues"
   },
   "homepage": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk#readme",
+  "lint-staged": {
+    "*.{json}": [
+      "prettier lib --write",
+      "git add"
+    ],
+    "*.{ts,js}": [
+      "prettier --write",
+      "eslint lib --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "compare-versions": "^4.1.1",
     "js-cookie": "^3.0.1",
     "qs": "^6.10.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@types/js-cookie": "^3.0.1",
     "@types/node": "^16.11.11",
     "@types/qs": "^6.9.7",
@@ -31,6 +45,8 @@
     "eslint": "^8.4.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
     "prettier": "^2.5.1",
     "typescript": "^4.5.2"
   }
