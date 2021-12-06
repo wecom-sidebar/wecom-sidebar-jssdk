@@ -1,4 +1,4 @@
-import {isMock, mockJsSdk} from "../jsSdk/utils";
+import { isMock, mockJsSdk } from "../jsSdk/utils";
 import _jsSdk from "../jsSdk";
 
 /**
@@ -6,13 +6,17 @@ import _jsSdk from "../jsSdk";
  * @param wxResMock wx.fn 的 mock 映射关系
  * @param invokeResMock wx.invoke 的 mock 映射关系
  */
-const createJsSdk = (wxResMock?: Record<string, any>, invokeResMock?: Record<string, any>) => {
+const createJsSdk = (
+  wxResMock?: Record<string, any>,
+  invokeResMock?: Record<string, any>
+) => {
+  return isMock
+    ? mockJsSdk(
+        _jsSdk,
+        wxResMock || window.wxResMock || {},
+        invokeResMock || window.invokeResMock || {}
+      )
+    : _jsSdk;
+};
 
-  return isMock ? mockJsSdk(
-    _jsSdk,
-    wxResMock || window.wxResMock || {},
-    invokeResMock || window.invokeResMock || {}
-  ) : _jsSdk;
-}
-
-export default createJsSdk
+export default createJsSdk;

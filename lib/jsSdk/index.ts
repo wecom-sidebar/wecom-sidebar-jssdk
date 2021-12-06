@@ -1,16 +1,16 @@
-import compareVersions from 'compare-versions'
+import compareVersions from "compare-versions";
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 const warnLog = (...args: any) => {
   if (isDev) {
     console.warn(...args);
   }
-}
+};
 const infoLog = (...args: any) => {
   if (isDev) {
     console.info(...args);
   }
-}
+};
 
 /**
  * jssdk 的 config 函数的封装
@@ -27,7 +27,7 @@ const config = (setting: ConfigParams): Promise<WxFnCallbackRes | null> => {
  * 根据 userAgent 检查当前企业微信版本号是否 < 3.0.24
  */
 const checkDeprecated = async (): Promise<boolean> => {
-  const DEPRECATED_VERSION = '3.0.24'
+  const DEPRECATED_VERSION = "3.0.24";
 
   const versionRegexp = /wxwork\/([\d.]+)/;
   const versionResult = navigator.userAgent.match(versionRegexp);
@@ -39,7 +39,7 @@ const checkDeprecated = async (): Promise<boolean> => {
   const [, version] = versionResult;
 
   // version < DEPRECATED_VERSION ?
-  return compareVersions(version, DEPRECATED_VERSION) === -1
+  return compareVersions(version, DEPRECATED_VERSION) === -1;
 };
 
 /**
@@ -52,7 +52,8 @@ const invoke = <Res = {}>(apiName: InvokeApi, params = {}) => {
   return new Promise<WxInvokeCallbackRes & Res>((resolve, reject) => {
     const copiedParams = JSON.parse(JSON.stringify(params));
     wx.invoke<Res>(apiName, copiedParams, (res: WxInvokeCallbackRes & Res) => {
-      const hasError = res.err_msg !== `${apiName}:ok` && res.err_msg !== `${apiName}:cancel`
+      const hasError =
+        res.err_msg !== `${apiName}:ok` && res.err_msg !== `${apiName}:cancel`;
 
       if (hasError) {
         warnLog(`调用 wx.invoke('${apiName}') 出错，入参：`, copiedParams);
@@ -79,15 +80,15 @@ const asyncCall = (apiName: AsyncCallApi, params: any = {}) => {
       trigger: resolve,
       cancel: resolve,
       fail: (error: WxFnCallbackRes) => {
-        warnLog(`调用 wx.${apiName} 出错，入参：`, params)
-        warnLog(`调用 wx.${apiName} 出错，返回值：`, error.errMsg)
-        reject(new Error(error.errMsg))
-      }
-    }
+        warnLog(`调用 wx.${apiName} 出错，入参：`, params);
+        warnLog(`调用 wx.${apiName} 出错，返回值：`, error.errMsg);
+        reject(new Error(error.errMsg));
+      },
+    };
 
     wx[apiName](callParams);
-  })
-}
+  });
+};
 
 /**
  * wx.fn 的同步调用方法
@@ -97,7 +98,7 @@ const asyncCall = (apiName: AsyncCallApi, params: any = {}) => {
 const call = (apiName: SyncCallApi, params: any = {}) => {
   infoLog(`调用 wx.${apiName}，入参`, params);
   return wx[apiName](params);
-}
+};
 
 /**
  * wx.onXXX 的调用方法，用于监听事件
@@ -110,7 +111,7 @@ const call = (apiName: SyncCallApi, params: any = {}) => {
 const listen = (eventName: EventApi, callback: any) => {
   infoLog(`监听 wx.${eventName}`);
   return wx[eventName](callback);
-}
+};
 
 const _jsSdk = {
   checkDeprecated,

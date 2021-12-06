@@ -4,11 +4,10 @@ interface CheckJsApiParams {
   // 以键值对的形式返回，可用的api值true，不可用为false
   // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
   success?: WxInvokeCallback<{
-    checkResult: { [api in Api]: boolean },
+    checkResult: { [api in Api]: boolean };
     errMsg: string;
-  }>
+  }>;
 }
-
 
 /**
  * 所有需要使用JS-SDK的页面必须先注入配置信息，否则将无法调用（同一个url仅需调用一次，
@@ -41,6 +40,11 @@ interface AgentConfigParams extends CommonParams {
 }
 
 type GetContextRes = {
-  entry: 'normal' | 'contact_profile' | 'single_chat_tools' | 'group_chat_tools' | 'chat_attachment'; // 返回进入H5页面的入口类型
+  entry:
+    | "normal"
+    | "contact_profile"
+    | "single_chat_tools"
+    | "group_chat_tools"
+    | "chat_attachment"; // 返回进入H5页面的入口类型
   shareTicket?: string; // 可用于调用getShareInfo接口
-}
+};
