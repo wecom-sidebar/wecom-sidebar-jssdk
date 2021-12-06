@@ -19,10 +19,6 @@
   },
   "homepage": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk#readme",
   "lint-staged": {
-    "*.{json}": [
-      "prettier lib --write",
-      "git add"
-    ],
     "*.{ts,js}": [
       "prettier --write",
       "eslint lib --fix",
