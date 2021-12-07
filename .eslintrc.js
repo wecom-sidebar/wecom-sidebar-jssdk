@@ -19,5 +19,6 @@ module.exports = {
     camelcase: "off",
     "no-empty-pattern": "off",
     "@typescript-eslint/adjacent-overload-signatures": "off",
+    "@typescript-eslint/no-var-requires": "off",
   },
 };
