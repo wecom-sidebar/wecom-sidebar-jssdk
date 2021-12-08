@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
-import qs from "qs";
 import { Config } from "./initSdk";
 import { isMock } from "../jsSdk/utils";
+import queryParse from "../utils/queryParse";
 
 type GetUserId = (code: string) => Promise<string>;
 
@@ -60,9 +60,11 @@ const checkRedirect = async (
 
   // 判断是否需要重新获取 userId
   if (unAuth) {
-    const code = qs.parse(window.location.search.slice(1)).code as string;
+    const { code }: { code?: string } = queryParse(
+      window.location.search.slice(1)
+    );
 
-    const newUserId = await getUserId(code);
+    const newUserId = await getUserId(code || "");
 
     Cookies.set("userId", newUserId);
   }

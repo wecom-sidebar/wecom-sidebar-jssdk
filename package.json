@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts lib --fix",
     "prepare": "husky install",
-    "test": "jest --passWithNoTests"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,7 @@
   },
   "dependencies": {
     "compare-versions": "^4.1.1",
-    "js-cookie": "^3.0.1",
-    "qs": "^6.10.2"
+    "js-cookie": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -36,15 +35,17 @@
     "@babel/preset-typescript": "^7.16.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@types/jest": "^27.0.3",
     "@types/js-cookie": "^3.0.1",
     "@types/node": "^16.11.11",
-    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
+    "babel-jest": "^27.4.2",
     "eslint": "^8.4.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
+    "jest": "^27.4.3",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.1",
     "ts-loader": "^9.2.6",
