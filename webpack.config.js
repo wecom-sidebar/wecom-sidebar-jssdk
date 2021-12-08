@@ -27,7 +27,12 @@ module.exports = {
   },
   target: ["web", "es5"],
   output: {
+    clean: true,
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
+    library: {
+      name: "wecom-sidebar-jssdk",
+      type: "umd",
+    },
   },
 };
