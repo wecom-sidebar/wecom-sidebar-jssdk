@@ -1,22 +1,30 @@
 {
   "name": "wecom-sidebar-jssdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "更高抽象的企业微信 JS-SDK 封装",
   "main": "./dist/index.js",
+  "email": "haixiang6123@gmail.com",
   "scripts": {
     "lint": "eslint --ext .js,.ts lib --fix",
     "prepare": "husky install",
     "test": "jest"
   },
+  "files": [
+    "lib/**/*",
+    "dist/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wecom-sidebar/wecom-sidebar-jssdk.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Haixiang Yan",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk/issues"
+  },
+  "directories": {
+    "test": "test"
   },
   "homepage": "https://github.com/wecom-sidebar/wecom-sidebar-jssdk#readme",
   "lint-staged": {
