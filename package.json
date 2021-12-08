@@ -26,7 +26,6 @@
     ]
   },
   "dependencies": {
-    "compare-versions": "^4.1.1",
     "js-cookie": "^3.0.1"
   },
   "devDependencies": {

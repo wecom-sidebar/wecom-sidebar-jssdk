@@ -1,4 +1,4 @@
-import compareVersions from "compare-versions";
+import compareVersions from "../utils/compareVersions";
 
 const isDev = process.env.NODE_ENV === "development";
 const warnLog = (...args: any) => {
