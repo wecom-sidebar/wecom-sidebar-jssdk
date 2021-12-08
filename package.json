@@ -2,7 +2,7 @@
   "name": "wecom-sidebar-jssdk",
   "version": "1.0.0",
   "description": "更高抽象的企业微信 JS-SDK 封装",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "lint": "eslint --ext .js,.ts lib --fix",
     "prepare": "husky install",
