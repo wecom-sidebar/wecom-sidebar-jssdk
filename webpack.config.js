@@ -1,10 +1,12 @@
 const path = require("path");
+const SourceMapDevToolPlugin = require("webpack").SourceMapDevToolPlugin;
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "production",
   entry: "./lib/index.ts",
+  devtool: false,
   module: {
     rules: [
       {
@@ -14,7 +16,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  plugins: [
+    new BundleAnalyzerPlugin(),
+    new SourceMapDevToolPlugin({
+      filename: "[file].map",
+    }),
+  ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
