@@ -1,5 +1,5 @@
-import checkRedirect from "./utils/checkRedirect";
-import initSdk from "./utils/initSdk";
-import createJsSdk from "./utils/createJsSdk";
+import checkRedirect from "./apis/checkRedirect";
+import initSdk from "./apis/initSdk";
+import createJsSdk from "./apis/createJsSdk";
 
 export { createJsSdk, checkRedirect, initSdk };
