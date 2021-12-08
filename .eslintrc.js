@@ -8,6 +8,7 @@ module.exports = {
     "prettier",
     "plugin:prettier/recommended",
   ],
+  ignorePatterns: ["example/*"],
   rules: {
     "no-console": "off",
     "no-debugger": "off",
