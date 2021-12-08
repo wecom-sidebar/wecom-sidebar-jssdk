@@ -25,9 +25,6 @@
       "eslint lib --fix"
     ]
   },
-  "dependencies": {
-    "js-cookie": "^3.0.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
@@ -35,7 +32,6 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@types/jest": "^27.0.3",
-    "@types/js-cookie": "^3.0.1",
     "@types/node": "^16.11.11",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",

@@ -1,7 +1,7 @@
-import Cookies from "js-cookie";
 import { Config } from "./initSdk";
 import { isMock } from "../jsSdk/utils";
 import queryParse from "../utils/queryParse";
+import cookies from "../utils/cookies";
 
 type GetUserId = (code: string) => Promise<string>;
 
@@ -42,12 +42,12 @@ const checkRedirect = async (
   if (isMock) {
     // 使用 mock 的 userId
     if (mockUserId || window.mockUserId) {
-      Cookies.set("userId", mockUserId || window.mockUserId);
+      cookies.set("userId", mockUserId || window.mockUserId);
     }
     return;
   }
 
-  const userId = Cookies.get("userId");
+  const userId = cookies.get("userId");
 
   const unAuth = !userId || userId === "undefined" || userId === "null";
 
@@ -66,7 +66,7 @@ const checkRedirect = async (
 
     const newUserId = await getUserId(code || "");
 
-    Cookies.set("userId", newUserId);
+    cookies.set("userId", newUserId);
   }
 };
 
