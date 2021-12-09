@@ -1,4 +1,4 @@
-const apis: Api[] = [
+const wxApis: Api[] = [
   "sendChatMessage",
   "startRecord",
   "stopRecord",
@@ -99,4 +99,4 @@ const apis: Api[] = [
   "onBeaconServiceChange",
 ];
 
-export default apis;
+export default wxApis;

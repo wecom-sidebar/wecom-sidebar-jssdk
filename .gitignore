@@ -83,7 +83,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -149,3 +148,9 @@ Temporary Items
 
 # VsCode
 .vscode
+
+# build
+dist
+lib
+es
+types

@@ -1,4 +1,4 @@
-import compareVersions from "../lib/utils/compareVersions";
+import compareVersions from "../src/utils/compareVersions";
 
 describe("compareVersions", () => {
   it("测试大于", () => {

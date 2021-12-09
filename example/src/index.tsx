@@ -3,11 +3,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import VConsole from "vconsole";
 import {ConfigProvider, message} from 'antd';
+import {checkRedirect, createJsSdk, initSdk} from "wecom-sidebar-jssdk";
 import App from './App'
 import {fetchUserId, fetchSignatures} from './http'
 import config from './_config'
 import {invokeResMock, mockUserId, wxResMock} from "./mock";
-import {checkRedirect, createJsSdk, initSdk} from "./lib";
 
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/lib/locale/zh_CN';

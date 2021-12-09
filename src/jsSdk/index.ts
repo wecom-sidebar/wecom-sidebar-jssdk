@@ -1,15 +1,10 @@
 import compareVersions from "../utils/compareVersions";
 
-const isDev = process.env.NODE_ENV === "development";
 const warnLog = (...args: any) => {
-  if (isDev) {
-    console.warn(...args);
-  }
+  console.warn(...args);
 };
 const infoLog = (...args: any) => {
-  if (isDev) {
-    console.info(...args);
-  }
+  console.info(...args);
 };
 
 /**

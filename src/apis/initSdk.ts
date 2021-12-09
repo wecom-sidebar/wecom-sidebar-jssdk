@@ -1,4 +1,4 @@
-import apis from "../jsSdk/apis";
+import wxApis from "../jsSdk/wxApis";
 import { JsSDK } from "../jsSdk";
 
 export interface Config {
@@ -47,7 +47,7 @@ const initSdk = async (
     timestamp: signaturesRes.meta.timestamp, // 必填，生成签名的时间戳
     nonceStr: signaturesRes.meta.nonceStr, // 必填，生成签名的随机串
     signature: signaturesRes.corp.signature, // 必填，签名，见 附录-JS-SDK使用权限签名算法
-    jsApiList: apis, // 必填，需要使用的JS接口列表，凡是要调用的接口都需要传进来
+    jsApiList: wxApis, // 必填，需要使用的JS接口列表，凡是要调用的接口都需要传进来
   });
   const agentConfigRes = await jsSdk.asyncCall("agentConfig", {
     corpid: corpId,
@@ -55,7 +55,7 @@ const initSdk = async (
     timestamp: signaturesRes.meta.timestamp,
     nonceStr: signaturesRes.meta.nonceStr,
     signature: signaturesRes.app.signature,
-    jsApiList: apis,
+    jsApiList: wxApis,
   });
 
   console.log("agentConfig res", agentConfigRes);

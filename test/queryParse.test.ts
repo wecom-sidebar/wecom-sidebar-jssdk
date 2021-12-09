@@ -1,4 +1,4 @@
-import queryParse from "../lib/utils/queryParse";
+import queryParse from "../src/utils/queryParse";
 
 describe("queryParse", () => {
   it("可以处理正常 query 字符串", () => {

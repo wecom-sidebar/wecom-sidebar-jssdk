@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "outDir": "./dist",
     "lib": [
       "dom",
       "dom.iterable",
@@ -8,19 +8,30 @@
     ],
     "types": ["node", "jest"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "declaration": true,
+    "declarationDir": "./types",
+    "sourceMap": true,
+    "removeComments": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
-    "lib",
-    "**/.*.js",
+    "src"
+  ],
+  "exclude": [
+    "./test",
+    "node_modules"
   ]
 }

@@ -1,4 +1,5 @@
 import React, {createContext, FC, useEffect, useState} from 'react'
+import {wxApis} from "wecom-sidebar-jssdk";
 import Basic from "./components/Basic";
 import Session from "./components/Session";
 import Contact from "./components/Contact";
@@ -13,7 +14,6 @@ import Device from "./components/Device";
 import {jsSdk} from "./index";
 
 import './styles.css'
-import apis from "./lib/jsSdk/apis";
 
 export const SidebarContext = createContext({
   enabledApiList: [] as string[],
@@ -23,7 +23,7 @@ const App: FC = () => {
   const [enabledApiList, setEnabledApiList] = useState<string[]>([]);
 
   useEffect(() => {
-    jsSdk.asyncCall('checkJsApi', { jsApiList: apis })
+    jsSdk.asyncCall('checkJsApi', { jsApiList: wxApis })
       .then((res: any) => {
         const enabledList = Object.entries(res.checkResult).reduce<string[]>((prevList, [key, value]) => {
           if (value) {

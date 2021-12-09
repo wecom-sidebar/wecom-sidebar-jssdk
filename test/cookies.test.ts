@@ -1,4 +1,4 @@
-import cookies from "../lib/utils/cookies";
+import cookies from "../src/utils/cookies";
 
 describe("cookies", () => {
   it("设置 userId", () => {
