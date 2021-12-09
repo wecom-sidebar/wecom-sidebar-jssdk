@@ -1,4 +1,5 @@
 import React, {FC, useState} from "react";
+import { listen } from "wecom-sidebar-jssdk";
 import {
   closeBluetoothAdapter,
   getBLEDeviceCharacteristics,
@@ -31,7 +32,6 @@ import {
   stopBluetoothDevicesDiscovery,
   stopWifi
 } from "./apis";
-import {jsSdk} from "../../index";
 import {logInfo} from "../../utils";
 import ItemButton from "../Item/ItemButton";
 import ItemSwitch from "../Item/ItemSwitch";
@@ -158,7 +158,7 @@ const Device: FC = () => {
         checked={switches.onLocationChange}
         onChange={() => {
           setSwitches({...switches, onLocationChange: true});
-          jsSdk.listen('onLocationChange', (res: any) => {
+          listen('onLocationChange', (res: any) => {
             logInfo('onLocationChange', JSON.stringify(res));
           })
         }}

@@ -21,7 +21,7 @@
     "skipLibCheck": true,
     "jsx": "react",
     "declaration": true,
-    "declarationDir": "./types",
+    "declarationDir": "./@types",
     "sourceMap": true,
     "removeComments": false,
     "noUnusedLocals": true,

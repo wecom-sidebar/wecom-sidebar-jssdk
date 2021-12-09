@@ -1,5 +1,5 @@
 import React, {createContext, FC, useEffect, useState} from 'react'
-import {wxApis} from "wecom-sidebar-jssdk";
+import {wxApis, asyncCall} from "wecom-sidebar-jssdk";
 import Basic from "./components/Basic";
 import Session from "./components/Session";
 import Contact from "./components/Contact";
@@ -11,7 +11,6 @@ import UI from "./components/UI";
 import Media from "./components/Media";
 import ThirdService from "./components/ThirdService";
 import Device from "./components/Device";
-import {jsSdk} from "./index";
 
 import './styles.css'
 
@@ -23,7 +22,7 @@ const App: FC = () => {
   const [enabledApiList, setEnabledApiList] = useState<string[]>([]);
 
   useEffect(() => {
-    jsSdk.asyncCall('checkJsApi', { jsApiList: wxApis })
+    asyncCall('checkJsApi', { jsApiList: wxApis })
       .then((res: any) => {
         const enabledList = Object.entries(res.checkResult).reduce<string[]>((prevList, [key, value]) => {
           if (value) {

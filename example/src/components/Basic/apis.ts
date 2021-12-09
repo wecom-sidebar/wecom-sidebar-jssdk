@@ -1,10 +1,9 @@
-import { wxApis } from "wecom-sidebar-jssdk";
-import { jsSdk } from "../../index";
+import { asyncCall, invoke, wxApis } from "wecom-sidebar-jssdk";
 import { logInfo } from "../../utils";
 
 export const checkJsApi = async () => {
   try {
-    const res = await jsSdk.asyncCall("checkJsApi", {
+    const res = await asyncCall("checkJsApi", {
       jsApiList: wxApis,
     });
     logInfo("checkJsApi", JSON.stringify(res));
@@ -16,7 +15,7 @@ export const checkJsApi = async () => {
 
 export const getContext = async () => {
   try {
-    const res = await jsSdk.invoke("getContext", {});
+    const res = await invoke("getContext", {});
     logInfo("getContext", JSON.stringify(res));
     return res;
   } catch (errRes) {

@@ -1,9 +1,6 @@
-import { Config } from "./initSdk";
-import { isMock } from "../jsSdk/utils";
+import { isMock } from "../utils/mock";
 import queryParse from "../utils/queryParse";
 import cookies from "../utils/cookies";
-
-type GetUserId = (code: string) => Promise<string>;
 
 /**
  * 获取重定位的 OAuth 路径

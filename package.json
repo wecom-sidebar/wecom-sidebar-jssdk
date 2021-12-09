@@ -5,7 +5,7 @@
   "main": "lib/jsSdk.js",
   "unpkg": "dist/jsSdk.js",
   "module": "es/jsSdk.js",
-  "types": "types/index.d.ts",
+  "types": "@types/index.d.ts",
   "email": "haixiang6123@gmail.com",
   "scripts": {
     "clean": "rimraf lib dist es coverage types",

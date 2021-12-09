@@ -3,17 +3,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import VConsole from "vconsole";
 import {ConfigProvider, message} from 'antd';
-import {checkRedirect, createJsSdk, initSdk} from "wecom-sidebar-jssdk";
+import {checkRedirect, initSdk} from "wecom-sidebar-jssdk";
 import App from './App'
-import {fetchUserId, fetchSignatures} from './http'
+import {fetchSignatures, fetchUserId} from './http'
 import config from './_config'
-import {invokeResMock, mockUserId, wxResMock} from "./mock";
+import {mockUserId} from "./mock";
 
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/lib/locale/zh_CN';
 import 'antd/dist/antd.css';
-
-export const jsSdk = createJsSdk(wxResMock, invokeResMock);
 
 // 作为微应用时不能使用 VConsole
 if (!window.__POWERED_BY_QIANKUN__) {
@@ -27,6 +25,7 @@ const AppWrapper = (
 )
 
 const render = async (props: any) => {
+  console.log('yyy');
   const {container} = props;
 
   if (container) {
@@ -41,7 +40,7 @@ const render = async (props: any) => {
 // 单独应用
 if (!window.__POWERED_BY_QIANKUN__) {
   checkRedirect(config, fetchUserId, mockUserId)
-    .then(() => initSdk(jsSdk, config, fetchSignatures))
+    .then(() => initSdk(config, fetchSignatures))
     .catch(() => message.error('JS-SDK 初始化失败'))
     .finally(() => render({}));
 }
