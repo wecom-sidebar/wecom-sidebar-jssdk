@@ -13,7 +13,8 @@
     "lint": "eslint --ext .js,.ts src --fix",
     "prepare": "husky install",
     "test": "jest",
-    "prepublishOnly": "npm run clean && npm test"
+    "prepublishOnly": "npm run clean && npm test",
+    "release": "standard-version && git push --follow-tags origin"
   },
   "files": [
     "dist",
@@ -67,6 +68,7 @@
     "prettier": "^2.5.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.1",
+    "standard-version": "^9.3.2",
     "typescript": "^4.5.2"
   }
 }
