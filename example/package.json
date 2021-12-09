@@ -23,7 +23,7 @@
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "start": "BROWSER=none PORT=4000 rescripts start",
+    "start": "SKIP_PREFLIGHT_CHECK=true BROWSER=none PORT=4000 rescripts start",
     "build": "rescripts build",
     "test": "rescripts test"
   },
