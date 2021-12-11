@@ -4,15 +4,21 @@ import _call from "./apis/call";
 import _checkRedirect from "./apis/checkRedirect";
 import _initSdk from "./apis/initSdk";
 import _invoke from "./apis/invoke";
-import _listen from "./apis/listen";
 import { isMock } from "./utils/mock";
 import { infoLog } from "./utils/log";
+import { AsyncCallMap } from "./types/apis/AsyncCallMap";
+import { CallMap } from "./types/apis/CallMap";
+import { Config, GetSignatures, GetUserId } from "./types/common";
+import { InvokeMap } from "./types/apis/InvokeMap";
 
 export const wxApis = _wxApis;
 
-export const asyncCall = async (apiName: AsyncCallApi, params: any = {}) => {
+export const asyncCall = async <K extends keyof AsyncCallMap>(
+  apiName: K,
+  params: AsyncCallMap[K]["params"] = {}
+): Promise<AsyncCallMap[K]["res"]> => {
   if (!isMock) {
-    return _asyncCall(apiName, params);
+    return _asyncCall<K>(apiName, params);
   }
 
   infoLog(`asyncCall: 调用 wx.${apiName}, 入参:`, params);
@@ -25,7 +31,10 @@ export const asyncCall = async (apiName: AsyncCallApi, params: any = {}) => {
   return mockRes;
 };
 
-export const call = (apiName: SyncCallApi, params: any = {}) => {
+export const call = <K extends keyof CallMap>(
+  apiName: K,
+  params: CallMap[K]["params"] = {}
+) => {
   if (!isMock) {
     return _call(apiName, params);
   }
@@ -58,9 +67,12 @@ export const initSdk = async (config: Config, getSignatures: GetSignatures) => {
   infoLog("initSdk: 传入配置:", config);
 };
 
-export const invoke = async <Res = {}>(apiName: InvokeApi, params = {}) => {
+export const invoke = async <K extends keyof InvokeMap>(
+  apiName: K,
+  params: InvokeMap[K]["params"] = {}
+): Promise<InvokeMap[K]["res"]> => {
   if (!isMock) {
-    return _invoke<Res>(apiName, params);
+    return _invoke<K>(apiName, params);
   }
 
   infoLog(`invoke: wx.invoke('${apiName}'), 入参:`, params);
@@ -69,13 +81,4 @@ export const invoke = async <Res = {}>(apiName: InvokeApi, params = {}) => {
     typeof mockValue === "function" ? mockValue(apiName, params) : mockValue;
   infoLog(`invoke: 调用 wx.invoke('${apiName}'), 返回:`, mockRes);
   return mockRes;
-};
-
-export const listen = (eventName: EventApi, callback: any) => {
-  if (!isMock) {
-    return _listen(eventName, callback);
-  }
-
-  infoLog("目前暂不支持对事件的 Mock");
-  infoLog(`监听 ${eventName} 事件`);
 };

@@ -2,6 +2,9 @@ import wxApis from "../constants/wxApis";
 import { isMock } from "../utils/mock";
 import asyncCall from "./asyncCall";
 import compareVersions from "../utils/compareVersions";
+import { WxFnCallbackRes } from "../types/wx/common";
+import { ConfigParams } from "../types/wx/basic";
+import { Config, GetSignatures } from "../types/common";
 
 /**
  * 根据 userAgent 检查当前企业微信版本号是否 < 3.0.24
@@ -34,8 +37,8 @@ const configAndReady = (
       console.log("调用 config，入参", setting);
       return resolve(null);
     }
-    wx.config({ ...setting });
-    wx.ready(() => resolve(null));
+    window.wx.config({ ...setting });
+    window.wx.ready(() => resolve(null));
   });
 };
 

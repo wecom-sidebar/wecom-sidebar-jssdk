@@ -3,7 +3,7 @@ import { getUserId, logInfo } from "../../utils";
 
 export const startMeeting = async () => {
   try {
-    const userId = await getUserId();
+    const userId = (await getUserId()) || "";
 
     const res = await invoke("startMeeting", {
       meetingType: 0,

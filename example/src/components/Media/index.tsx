@@ -47,7 +47,9 @@ const Media: FC = () => {
         <ItemButton onClick={() => setModalConfig({...modalConfig, type: 'playVoice', visible: true})}>
           wx.playVoice
         </ItemButton>
-        <ItemButton onClick={stopVoice}>wx.stopVoice</ItemButton>
+        <ItemButton onClick={() => setModalConfig({...modalConfig, type: 'stopVoice', visible: true})}>
+          wx.stopVoice
+        </ItemButton>
         <ItemButton onClick={() => setModalConfig({...modalConfig, type: 'pauseVoice', visible: true})}>
           wx.pauseVoice
         </ItemButton>
@@ -81,6 +83,8 @@ const Media: FC = () => {
               return getLocalImgData(modalConfig.localId);
             case 'playVoice':
               return playVoice(modalConfig.localId);
+            case 'stopVoice':
+              return stopVoice(modalConfig.localId);
             case 'pauseVoice':
               return pauseVoice(modalConfig.localId);
             case 'uploadVoice':

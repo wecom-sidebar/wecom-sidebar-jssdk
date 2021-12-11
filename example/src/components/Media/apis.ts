@@ -90,8 +90,8 @@ export const pauseVoice = (localId: string) => {
   call("pauseVoice", { localId });
 };
 
-export const stopVoice = () => {
-  call("stopVoice", {});
+export const stopVoice = (localId: string) => {
+  call("stopVoice", { localId });
 };
 
 export const onVoicePlayEnd = () => {

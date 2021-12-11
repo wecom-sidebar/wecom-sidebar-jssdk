@@ -1,4 +1,4 @@
-import { invoke, asyncCall, call, listen } from "wecom-sidebar-jssdk";
+import { invoke, asyncCall, call } from "wecom-sidebar-jssdk";
 import { logInfo } from "../../utils";
 
 const baiduLink = {
@@ -31,7 +31,7 @@ export const shareWechatMessage = async () => {
 };
 
 export const onHistoryBack = () => {
-  listen("onHistoryBack", () => {
+  call("onHistoryBack", () => {
     console.log("onHistoryBack", "监听页面返回事件");
   });
 };
@@ -70,7 +70,7 @@ export const openDefaultBrowser = async () => {
 };
 
 export const onUserCaptureScreen = () => {
-  listen("onUserCaptureScreen", () => {
+  call("onUserCaptureScreen", () => {
     logInfo("onUserCaptureScreen", "用户截屏了");
   });
 };

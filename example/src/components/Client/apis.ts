@@ -18,7 +18,7 @@ export const getCurExternalContact = async (
   showLog = false
 ): Promise<string | null> => {
   try {
-    const res = await invoke<{ userId: string }>("getCurExternalContact");
+    const res = await invoke("getCurExternalContact");
 
     if (showLog) {
       logInfo("getCurExternalContact", JSON.stringify(res));
@@ -36,7 +36,7 @@ export const getCurExternalChat = async (
   showLog = false
 ): Promise<string | null> => {
   try {
-    const res = await invoke<{ chatId: string }>("getCurExternalChat");
+    const res = await invoke("getCurExternalChat");
 
     if (showLog) {
       logInfo("getCurExternalChat", JSON.stringify(res));

@@ -1,4 +1,4 @@
-import { invoke, asyncCall, call, listen } from "wecom-sidebar-jssdk";
+import { invoke, asyncCall, call } from "wecom-sidebar-jssdk";
 import { logInfo } from "../../utils";
 
 export const startWifi = async () => {
@@ -29,13 +29,13 @@ export const getWifiList = async () => {
 };
 
 export const onGetWifiList = () => {
-  listen("onGetWifiList", (res: any) => {
+  call("onGetWifiList", (res: any) => {
     logInfo("onGetWifiList", JSON.stringify(res));
   });
 };
 
 export const onWifiConnected = () => {
-  listen("onWifiConnected", (res: any) => {
+  call("onWifiConnected", (res: any) => {
     logInfo("onWifiConnected", JSON.stringify(res));
   });
 };
@@ -50,13 +50,13 @@ export const getConnectedWifi = async () => {
 };
 
 export const onBLEConnectionStateChange = () => {
-  listen("onBLEConnectionStateChange", (res: any) => {
+  call("onBLEConnectionStateChange", (res: any) => {
     logInfo("onBLEConnectionStateChange", JSON.stringify(res));
   });
 };
 
 export const onBLECharacteristicValueChange = () => {
-  listen("onBLECharacteristicValueChange", (res: any) => {
+  call("onBLECharacteristicValueChange", (res: any) => {
     logInfo("onBLECharacteristicValueChange", JSON.stringify(res));
   });
 };
@@ -89,7 +89,7 @@ export const getBluetoothAdapterState = async () => {
 };
 
 export const onBluetoothAdapterStateChange = () => {
-  listen("onBluetoothAdapterStateChange", (res: any) => {
+  call("onBluetoothAdapterStateChange", (res: any) => {
     logInfo("onBluetoothAdapterStateChange", JSON.stringify(res));
   });
 };
@@ -107,9 +107,7 @@ export const startBluetoothDevicesDiscovery = async () => {
 
 export const stopBluetoothDevicesDiscovery = async () => {
   try {
-    const res = await asyncCall("stopBluetoothDevicesDiscovery", {
-      services: ["FEE7"],
-    });
+    const res = await asyncCall("stopBluetoothDevicesDiscovery");
     logInfo("stopBluetoothDevicesDiscovery", JSON.stringify(res));
   } catch (e: any) {
     logInfo("stopBluetoothDevicesDiscovery error", e.message);
@@ -126,14 +124,16 @@ export const getBluetoothDevices = async () => {
 };
 
 export const onBluetoothDeviceFound = () => {
-  listen("onBluetoothDeviceFound", (res: any) => {
+  call("onBluetoothDeviceFound", (res: any) => {
     logInfo("onBluetoothDeviceFound", JSON.stringify(res));
   });
 };
 
 export const getConnectedBluetoothDevices = async () => {
   try {
-    const res = await asyncCall("getConnectedBluetoothDevices", {});
+    const res = await asyncCall("getConnectedBluetoothDevices", {
+      services: [""],
+    });
     logInfo("getConnectedBluetoothDevices", JSON.stringify(res));
   } catch (e: any) {
     logInfo("getConnectedBluetoothDevices error", e.message);
@@ -142,7 +142,9 @@ export const getConnectedBluetoothDevices = async () => {
 
 export const getBLEDeviceServices = async () => {
   try {
-    const res = await asyncCall("getBLEDeviceServices", {});
+    const res = await asyncCall("getBLEDeviceServices", {
+      deviceId: "",
+    });
     logInfo("getBLEDeviceServices", JSON.stringify(res));
   } catch (e: any) {
     logInfo("getBLEDeviceServices error", e.message);
@@ -151,7 +153,10 @@ export const getBLEDeviceServices = async () => {
 
 export const getBLEDeviceCharacteristics = async () => {
   try {
-    const res = await asyncCall("getBLEDeviceCharacteristics", {});
+    const res = await asyncCall("getBLEDeviceCharacteristics", {
+      deviceId: "",
+      serviceId: "",
+    });
     logInfo("getBLEDeviceCharacteristics", JSON.stringify(res));
   } catch (e: any) {
     logInfo("getBLEDeviceCharacteristics error", e.message);
@@ -159,13 +164,13 @@ export const getBLEDeviceCharacteristics = async () => {
 };
 
 export const onBeaconUpdate = () => {
-  listen("onBeaconUpdate", (res: any) => {
+  call("onBeaconUpdate", (res: any) => {
     logInfo("onBeaconUpdate", JSON.stringify(res));
   });
 };
 
 export const onBeaconServiceChange = () => {
-  listen("onBeaconServiceChange", (res: any) => {
+  call("onBeaconServiceChange", (res: any) => {
     logInfo("onBeaconServiceChange", JSON.stringify(res));
   });
 };
@@ -203,7 +208,7 @@ export const setClipboardData = async () => {
 
 export const getNetworkType = async () => {
   try {
-    const res = await call("getNetworkType", {});
+    const res = await asyncCall("getNetworkType", {});
     logInfo("getNetworkType", JSON.stringify(res));
   } catch (e: any) {
     logInfo("getNetworkType error", e.message);
@@ -211,7 +216,7 @@ export const getNetworkType = async () => {
 };
 
 export const onNetworkStatusChange = () => {
-  listen("onNetworkStatusChange", (res: any) => {
+  call("onNetworkStatusChange", (res: any) => {
     logInfo("onNetworkStatusChange", JSON.stringify(res));
   });
 };

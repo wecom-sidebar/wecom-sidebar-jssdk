@@ -1,3 +1,5 @@
+import { Api } from "../types/wx/common";
+
 const wxApis: Api[] = [
   "sendChatMessage",
   "startRecord",

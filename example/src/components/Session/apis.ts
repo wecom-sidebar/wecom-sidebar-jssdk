@@ -17,7 +17,7 @@ export const updateEnterpriseChat = async () => {
     const externalChatId = await getCurExternalChat();
     const userId = getUserId();
     const res = await invoke("updateEnterpriseChat", {
-      chatId: externalChatId, //通过企业微信创建群聊接口返回的chatId
+      chatId: externalChatId || "", //通过企业微信创建群聊接口返回的chatId
       userIdsToAdd: [userId].join(";"), //参与会话的企业成员列表，格式为userid1;userid2;...，用分号隔开。
     });
     logInfo("updateEnterpriseChat", JSON.stringify(res));
@@ -30,8 +30,8 @@ export const openExistedChatWithMsg = async () => {
   try {
     const externalChatId = await getCurExternalChat();
     const res = await invoke("openExistedChatWithMsg", {
-      chatId: externalChatId,
-      text: {
+      chatId: externalChatId || "",
+      msg: {
         msgtype: "text",
         text: {
           content: "你好", //文本内容
@@ -94,8 +94,8 @@ export const createCorpGroupChat = async () => {
     const externalUserId = await getCurExternalContact();
     const res = await invoke("createCorpGroupChat", {
       groupName: "测试群聊", // 必填，会话名称。单聊时该参数传入空字符串""即可。
-      userIds: [userId], //参与会话的企业成员列表，仅自建应用使用，第三方应用会忽略该字段
-      externalUserIds: [externalUserId], // 外部联系人id
+      userIds: [userId || ""], //参与会话的企业成员列表，仅自建应用使用，第三方应用会忽略该字段
+      externalUserIds: [externalUserId || ""], // 外部联系人id
     });
     logInfo("createCorpGroupChat", JSON.stringify(res));
   } catch (e: any) {
@@ -108,8 +108,8 @@ export const updateCorpGroupChat = async () => {
     const externalChatId = await getCurExternalChat();
     const userId = await getUserId();
     const res = await invoke("updateCorpGroupChat", {
-      chatId: externalChatId,
-      userIdsToAdd: [userId],
+      chatId: externalChatId || "",
+      userIdsToAdd: [userId || ""],
     });
     logInfo("updateCorpGroupChat", JSON.stringify(res));
   } catch (e: any) {

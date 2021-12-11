@@ -1,4 +1,4 @@
-type EventApi =
+export type EventApi =
   | "onLocationChange"
   | "onHistoryBack"
   | "onGetWifiList"
@@ -13,7 +13,7 @@ type EventApi =
   | "onUserCaptureScreen";
 
 // 需要异步操作逻辑的 wx.fn
-type AsyncCallApi =
+export type AsyncCallApi =
   | "checkJsApi"
   | "stopRecord"
   | "uploadVoice"
@@ -52,7 +52,7 @@ type AsyncCallApi =
   | "config";
 
 // 所有同步 wx.fn 的 api
-type SyncCallApi =
+export type SyncCallApi =
   | "startRecord"
   | "playVoice"
   | "pauseVoice"
@@ -75,7 +75,7 @@ type SyncCallApi =
   | "onMenuShareTimeline";
 
 // 所有 wx.invoke 的 api 名
-type InvokeApi =
+export type InvokeApi =
   | "getContext"
   | "sendChatMessage"
   | "startAutoLBS"
@@ -110,26 +110,7 @@ type InvokeApi =
   | "updateMomentsSetting"
   | "openThirdAppServiceChat";
 
-type Api = AsyncCallApi | SyncCallApi | InvokeApi | EventApi;
-
-// 所有企业微信 SDK 的回调函数
-type WxFnCallback<ExtraRes = {}> = (res: WxFnCallbackRes & ExtraRes) => void;
-type WxInvokeCallback<ExtraRes = {}> = (
-  res: WxInvokeCallbackRes & ExtraRes
-) => void;
-
-// 通用 WxFn 的参数
-interface WxFnCommonParams<SuccessRes = {}, FailRes = {}, CompleteRes = {}> {
-  success?: WxFnCallback<SuccessRes>;
-  fail?: WxFnCallback<FailRes>;
-  complete?: WxFnCallback<CompleteRes>;
-}
-
-// wx.fn 的通用传参
-interface CommonParams extends WxFnCommonParams {
-  cancel?: Function;
-  trigger?: Function;
-}
+export type Api = AsyncCallApi | SyncCallApi | InvokeApi | EventApi;
 
 /**
  * 所有企业微信 SDK 的回调返回类型
@@ -138,17 +119,36 @@ interface CommonParams extends WxFnCommonParams {
  * 用户取消时：”xxx:cancel”，其中xxx为调用的接口名
  * 调用失败时：其值为具体错误信息
  */
-interface WxFnCallbackRes {
+export interface WxFnCallbackRes {
   errMsg: string;
 }
 
 // wx.invoke 调用回调内容
-interface WxInvokeCallbackRes {
+export interface WxInvokeCallbackRes {
   err_msg: string;
 }
 
+// 所有企业微信 SDK 的回调函数
+export type WxFnCallback<ExtraRes = {}> = (
+  res: WxFnCallbackRes & ExtraRes
+) => void;
+
+// 所有 wx.invoke 的回调函数
+export type WxInvokeCallback<ExtraRes = {}> = (
+  res: WxInvokeCallbackRes & ExtraRes
+) => void;
+
+// wx.fn 的通用的参数
+export interface WxFnCommonParams {
+  success?: WxFnCallback<any>;
+  fail?: WxFnCallback<any>;
+  complete?: WxFnCallback<any>;
+  cancel?: WxFnCallback<any>;
+  trigger?: WxFnCallback<any>;
+}
+
 // 发送文本格式
-interface TextMessage {
+export interface TextMessage {
   msgtype: "text";
   text: {
     content: string; // 文本内容
@@ -156,7 +156,7 @@ interface TextMessage {
 }
 
 // 发送图片格式
-interface ImageMessage {
+export interface ImageMessage {
   msgtype: "image";
   image: {
     mediaid: string; //图片的素材id
@@ -164,7 +164,7 @@ interface ImageMessage {
 }
 
 // 发送视频格式
-interface VideoMessage {
+export interface VideoMessage {
   msgtype: "video";
   video: {
     mediaid: string; //视频的素材id
@@ -172,7 +172,7 @@ interface VideoMessage {
 }
 
 // 发送文件格式
-interface FileMessage {
+export interface FileMessage {
   msgtype: "file";
   file: {
     mediaid: string; //文件的素材id
@@ -180,7 +180,7 @@ interface FileMessage {
 }
 
 // 发送链接卡片格式
-interface NewsMessage {
+export interface NewsMessage {
   msgtype: "news";
   news: {
     link: string; //H5消息页面url 必填
@@ -191,7 +191,7 @@ interface NewsMessage {
 }
 
 // 发送小程序格式
-interface MiniProgramMessage {
+export interface MiniProgramMessage {
   msgtype: "miniprogram";
   miniprogram: {
     appid: string; //小程序的appid
@@ -202,7 +202,7 @@ interface MiniProgramMessage {
 }
 
 // 发送链接格式
-interface LinkMessage {
+export interface LinkMessage {
   msgtype: "link";
   link: {
     title?: string;
@@ -213,7 +213,7 @@ interface LinkMessage {
 }
 
 // 总消息
-type Message =
+export type Message =
   | TextMessage
   | ImageMessage
   | VideoMessage
@@ -223,7 +223,7 @@ type Message =
   | LinkMessage;
 
 // 参与会话的互联企业成员
-interface CorpGroupUserId {
+export interface CorpGroupUserId {
   corpId: string; // 企业CORPID
   userId?: string; // 成员ID，仅自建应用使用
   openUserId?: string; // 成员OPEN_USERID，仅第三方应用使用

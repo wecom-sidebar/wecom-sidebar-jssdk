@@ -1,6 +1,7 @@
 import { isMock } from "../utils/mock";
 import queryParse from "../utils/queryParse";
 import cookies from "../utils/cookies";
+import { Config, GetUserId } from "../types/common";
 
 /**
  * 获取重定位的 OAuth 路径
