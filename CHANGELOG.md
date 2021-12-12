@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.3...v0.0.4) (2021-12-12)
+
+
+### Features
+
+* 优化代码结构 ([8f6a135](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/8f6a13525d52b4df336e22cfa88da4a293194795))
+* 将 .d.ts 转为 .ts 文件，一并输出 ([24522b9](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/24522b91fcafd9265a5d784dedab50050168250b))
+* 更新 clean 脚本 ([3ca85c9](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/3ca85c97d94ea6691bdf677ca0af8216154457ee))
+* 重新校对入参和出参 ([72d5962](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/72d5962895818e5fba9b4ec4f1f35df946e4e65f))
+
 ### 0.0.3 (2021-12-09)
 
 
