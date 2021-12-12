@@ -10,6 +10,7 @@ import {
   VideoMessage,
   WxFnCommonParams,
   WxInvokeCallback,
+  WxInvokeCallbackRes,
 } from "./common";
 
 export type OpenEnterpriseChatParams = WxFnCommonParams & {
@@ -21,7 +22,7 @@ export type OpenEnterpriseChatParams = WxFnCommonParams & {
   success?: WxInvokeCallback<OpenEnterpriseChatRes>;
 };
 
-export type OpenEnterpriseChatRes = {
+export type OpenEnterpriseChatRes = WxInvokeCallbackRes & {
   chatId: string;
 };
 
@@ -30,9 +31,13 @@ export type UpdateEnterpriseChatParams = {
   userIdsToAdd: string; // 参与会话的企业成员列表，格式为userid1;userid2;...，用分号隔开。
 };
 
+export type UpdateEnterpriseChatRes = WxInvokeCallbackRes;
+
 export type HideChatAttachmentMenuParams = {
   menuList: string[]; // 要隐藏的菜单项,sendMessage。即附件栏底部发送按钮。
 };
+
+export type HideChatAttachmentMenuRes = WxInvokeCallbackRes;
 
 // 分享消息到当前会话
 // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94354
@@ -47,6 +52,8 @@ export type SendChatMessageParams =
   | (FileMessage & SendChatMessageCommonParams)
   | (NewsMessage & SendChatMessageCommonParams)
   | (MiniProgramMessage & SendChatMessageCommonParams);
+
+export type SendChatMessageRes = WxInvokeCallbackRes;
 
 export type CreateChatWithMsgParams = {
   selectedOpenUserIds?: string[];
@@ -64,16 +71,20 @@ export type OpenExistedChatWithMsgParams = {
   msg?: Message;
 };
 
+export type OpenExistedChatWithMsgRes = WxInvokeCallbackRes;
+
 export type SetShareAttrParams = {
   withShareTicket?: boolean;
   state?: string;
 };
 
+export type SetShareAttrRes = WxInvokeCallbackRes;
+
 export type GetShareInfoParams = {
   shareTicket: string;
 };
 
-export type GetShareInfoRes = {
+export type GetShareInfoRes = WxInvokeCallbackRes & {
   encryptedData: string; // 转发信息的加密数据
   iv: string; //	加密算法的初始向量
 };
@@ -83,7 +94,15 @@ export type CreateCorpGroupChatParams = {
   userIds?: string[]; //参与会话的企业成员列表，仅自建应用使用，第三方应用会忽略该字段
   externalUserIds?: string[]; // 外部联系人id
   openUserIds?: string[]; // 参与会话的企业成员列表，仅第三方应用使用，自建应用会忽略该字段
-  corpGroupUserIds?: CorpGroupUserId[]; // 非必填， 参与会话的互联企业成员列表
+  corpGroupUserIds?: {
+    corpId: string; // 企业CORPID
+    userId: string; // 成员ID，仅自建应用使用
+    openUserId: string; // 成员OPEN_USERID，仅第三方应用使用
+  }[]; // 非必填， 参与会话的互联企业成员列表
+};
+
+export type CreateCorpGroupChatRes = WxInvokeCallbackRes & {
+  chatId: string; // 群聊 Id
 };
 
 export type UpdateCorpGroupChatParams = {
@@ -93,6 +112,8 @@ export type UpdateCorpGroupChatParams = {
   corpGroupUserIdsToAdd?: CorpGroupUserId[]; // 非必填， 参与会话的互联企业成员列表
 };
 
+export type UpdateCorpGroupChatRes = WxInvokeCallbackRes;
+
 // 分享内容
 export interface ShareContent {
   title: string; // 分享标题
@@ -101,5 +122,20 @@ export interface ShareContent {
   imgUrl: string; // 分享封面
 }
 
-export type ShareAppMessageParams = ShareContent;
-export type ShareWechatMessageParams = ShareContent;
+export type ShareAppMessageParams = {
+  title: string; // 分享标题
+  desc: string; // 分享描述
+  link: string; // 分享链接
+  imgUrl: string; // 分享封面
+};
+
+export type ShareAppMessageRes = WxInvokeCallbackRes;
+
+export type ShareWechatMessageParams = {
+  title: string; // 分享标题
+  desc: string; // 分享描述
+  link: string; // 分享链接
+  imgUrl: string; // 分享封面
+};
+
+export type ShareWechatMessageRes = WxInvokeCallbackRes;

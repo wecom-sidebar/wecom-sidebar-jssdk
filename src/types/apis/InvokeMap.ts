@@ -2,6 +2,7 @@ import { GetContextRes } from "../wx/basic";
 import {
   ClaimClassAdminRes,
   OpenUserProfileParams,
+  OpenUserProfileRes,
   SelectCorpGroupContactParams,
   SelectCorpGroupContactRes,
   SelectEnterpriseContactParams,
@@ -13,31 +14,50 @@ import {
   CreateChatWithMsgParams,
   CreateChatWithMsgRes,
   CreateCorpGroupChatParams,
+  CreateCorpGroupChatRes,
   GetShareInfoParams,
   GetShareInfoRes,
   HideChatAttachmentMenuParams,
+  HideChatAttachmentMenuRes,
   OpenExistedChatWithMsgParams,
+  OpenExistedChatWithMsgRes,
   SendChatMessageParams,
+  SendChatMessageRes,
   SetShareAttrParams,
+  SetShareAttrRes,
   ShareAppMessageParams,
+  ShareAppMessageRes,
   ShareWechatMessageParams,
+  ShareWechatMessageRes,
   UpdateCorpGroupChatParams,
+  UpdateCorpGroupChatRes,
   UpdateEnterpriseChatParams,
+  UpdateEnterpriseChatRes,
 } from "../wx/session";
 import {
   GetCurExternalChatRes,
   GetCurExternalContactRes,
+  NavigateToAddCustomerRes,
   SelectExternalContactParams,
   SelectExternalContactRes,
   ShareToExternalChatParams,
+  ShareToExternalChatRes,
   ShareToExternalContactParams,
+  ShareToExternalContactRes,
   ShareToExternalMomentsParams,
+  ShareToExternalMomentsRes,
   UpdateMomentsSettingParams,
+  UpdateMomentsSettingRes,
 } from "../wx/client";
-import { NavigateToKfChatParams } from "../wx/customer-service";
+import {
+  NavigateToKfChatParams,
+  NavigateToKfChatRes,
+} from "../wx/customer-service";
 import {
   DownloadLivingReplayParams,
+  DownloadLivingReplayRes,
   ReplayLivingParams,
+  ReplayLivingRes,
   StartLivingParams,
   StartLivingRes,
   StartMeetingParams,
@@ -50,10 +70,18 @@ import {
 import {
   ChooseInvoiceParams,
   ChooseInvoiceRes,
+  EnterpriseVerifyParams,
+  EnterpriseVerifyRes,
   LaunchMiniprogramParams,
+  LaunchMiniprogramRes,
   OpenDefaultBrowserParams,
+  OpenDefaultBrowserRes,
 } from "../wx/ui";
-import { StartAutoLBSParams } from "../wx/device";
+import {
+  StartAutoLBSParams,
+  startAutoLBSRes,
+  StopAutoLBSRes,
+} from "../wx/device";
 
 export interface InvokeMap {
   // 获取进入H5页面的入口环境
@@ -74,7 +102,7 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/91822
   openUserProfile: {
     params: OpenUserProfileParams;
-    res: {};
+    res: OpenUserProfileRes;
   };
 
   // 企业互联选人接口
@@ -102,19 +130,19 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93232
   updateEnterpriseChat: {
     params: UpdateEnterpriseChatParams;
-    res: {};
+    res: UpdateEnterpriseChatRes;
   };
 
   // 隐藏聊天附件栏的发送按钮
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94355
   hideChatAttachmentMenu: {
     params: HideChatAttachmentMenuParams;
-    res: {};
+    res: HideChatAttachmentMenuRes;
   };
 
   sendChatMessage: {
     params: SendChatMessageParams;
-    res: {};
+    res: SendChatMessageRes;
   };
 
   // 创建群聊并发送消息
@@ -128,14 +156,14 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94518
   openExistedChatWithMsg: {
     params: OpenExistedChatWithMsgParams;
-    res: {};
+    res: OpenExistedChatWithMsgRes;
   };
 
   // 私密消息
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94495
   setShareAttr: {
     params: SetShareAttrParams;
-    res: {};
+    res: SetShareAttrRes;
   };
 
   getShareInfo: {
@@ -147,14 +175,14 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94547
   createCorpGroupChat: {
     params: CreateCorpGroupChatParams;
-    res: {};
+    res: CreateCorpGroupChatRes;
   };
 
   // 变更企业互联群成员
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94548
   updateCorpGroupChat: {
     params: UpdateCorpGroupChatParams;
-    res: {};
+    res: UpdateCorpGroupChatRes;
   };
 
   // 外部联系人选人接口
@@ -182,41 +210,41 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93562
   shareToExternalContact: {
     params: ShareToExternalContactParams;
-    res: {};
+    res: ShareToExternalContactRes;
   };
 
   // 群发消息到客户群
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93563
   shareToExternalChat: {
     params: ShareToExternalChatParams;
-    res: {};
+    res: ShareToExternalChatRes;
   };
 
   // 进入添加客户界面
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93235
   navigateToAddCustomer: {
     params: {};
-    res: {};
+    res: NavigateToAddCustomerRes;
   };
 
   // 发表内容到客户朋友圈
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94958
   shareToExternalMoments: {
     params: ShareToExternalMomentsParams;
-    res: {};
+    res: ShareToExternalMomentsRes;
   };
 
   // 设置朋友圈封面与签名
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94959
   updateMomentsSetting: {
     params: UpdateMomentsSettingParams;
-    res: {};
+    res: UpdateMomentsSettingRes;
   };
 
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/94870
   navigateToKfChat: {
     params: NavigateToKfChatParams;
-    res: {};
+    res: NavigateToKfChatRes;
   };
 
   // 创建立即会议
@@ -237,13 +265,13 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93835
   replayLiving: {
     params: ReplayLivingParams;
-    res: {};
+    res: ReplayLivingRes;
   };
 
   // 下载直播回放
   downloadLivingReplay: {
     params: DownloadLivingReplayParams;
-    res: {};
+    res: DownloadLivingReplayRes;
   };
 
   // 发起班级收款
@@ -256,21 +284,21 @@ export interface InvokeMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90523
   shareAppMessage: {
     params: ShareAppMessageParams;
-    res: {};
+    res: ShareAppMessageRes;
   };
 
   // 自定义转发到微信
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90523
   shareWechatMessage: {
     params: ShareWechatMessageParams;
-    res: {};
+    res: ShareWechatMessageRes;
   };
 
   // 打开系统默认浏览器
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90524
   openDefaultBrowser: {
     params: OpenDefaultBrowserParams;
-    res: {};
+    res: OpenDefaultBrowserRes;
   };
 
   // 拉起电子发票列表
@@ -280,17 +308,24 @@ export interface InvokeMap {
     res: ChooseInvoiceRes;
   };
 
+  // 快速跳转到认证界面
+  // 详见：https://work.weixin.qq.com/api/doc/90000/90136/91717
+  enterpriseVerify: {
+    params: EnterpriseVerifyParams;
+    res: EnterpriseVerifyRes;
+  };
+
   // 跳转到小程序
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93114
   launchMiniprogram: {
     params: LaunchMiniprogramParams;
-    res: {};
+    res: LaunchMiniprogramRes;
   };
 
   // 打开持续定位接口
   startAutoLBS: {
     params: StartAutoLBSParams;
-    res: {};
+    res: startAutoLBSRes;
   };
 
   // 进入应用客服会话
@@ -304,6 +339,6 @@ export interface InvokeMap {
   // 详见：https://work.weixin.qq.com/api/doc/90000/90136/90504
   stopAutoLBS: {
     params: {};
-    res: {};
+    res: StopAutoLBSRes;
   };
 }

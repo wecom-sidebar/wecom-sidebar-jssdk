@@ -2,6 +2,7 @@ import { WxFnCallback } from "../wx/common";
 import {
   HideMenuItemsParams,
   OnMenuShareAppMessageParams,
+  OnMenuShareTimeline,
   OnMenuShareWechat,
   ShowMenuItemParams,
 } from "../wx/ui";
@@ -21,11 +22,10 @@ import {
   OnBLECharacteristicValueChangeRes,
   OnBLEConnectionStateChangeRes,
   OnBluetoothAdapterStateChangeCallback,
-  OnGetWifiListRes,
   OnLocationChangeRes,
   OnNetworkStatusChangeCallbackRes,
-  OnWifiConnectedParams,
   OpenLocationParams,
+  WifiInfo,
 } from "../wx/device";
 
 export interface CallMap {
@@ -50,14 +50,14 @@ export interface CallMap {
 
   // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
   onMenuShareTimeline: {
-    params: OnMenuShareAppMessageParams;
+    params: OnMenuShareTimeline;
     res: void;
   };
 
   // 以下界面 API 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90524
   // 监听页面返回事件
   onHistoryBack: {
-    params: () => void;
+    params: () => boolean;
     res: void;
   };
 
@@ -105,7 +105,7 @@ export interface CallMap {
 
   // 用户截屏事件
   onUserCaptureScreen: {
-    params: () => void;
+    params: (res: any) => void;
     res: void;
   };
 
@@ -164,13 +164,13 @@ export interface CallMap {
   };
 
   onGetWifiList: {
-    params: WxFnCallback<OnGetWifiListRes>;
+    params: (res: { wifiList: WifiInfo[] }) => void;
     res: void;
   };
 
   // 监听连接上 Wi-Fi 的事件
   onWifiConnected: {
-    params: WxFnCallback<OnWifiConnectedParams>;
+    params: (res: { wifi: WifiInfo }) => void;
     res: void;
   };
 

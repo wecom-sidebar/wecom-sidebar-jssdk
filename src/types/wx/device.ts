@@ -1,22 +1,11 @@
-import { WxFnCallback, WxFnCommonParams } from "./common";
+import {
+  WxFnCallback,
+  WxFnCallbackRes,
+  WxFnCommonParams,
+  WxInvokeCallbackRes,
+} from "./common";
 
 export type NetworkType = "wifi" | "2g" | "3g" | "4g" | "none" | "unknown";
-
-export type OnNetworkStatusChangeCallbackRes = {
-  isConnected: boolean;
-  networkType: NetworkType;
-};
-
-export type StartWifiParams = WxFnCommonParams;
-export type StopWifiParams = WxFnCommonParams;
-
-export type ConnectWifiParams = WxFnCommonParams & {
-  SSID: string; // 设备SSID
-  BSSID?: string; // 设备BSSID
-  password?: string; // 设备密码
-};
-
-export type GetWifiListParams = WxFnCommonParams;
 
 // 监听获取到 Wi-Fi 列表事件
 export interface WifiInfo {
@@ -26,7 +15,37 @@ export interface WifiInfo {
   signalStrength: number; // Wi-Fi 信号强度
 }
 
-export type OnGetWifiListRes = {
+export type OnNetworkStatusChangeCallbackRes = {
+  isConnected: boolean;
+  networkType: NetworkType;
+};
+
+export type StartWifiParams = WxFnCommonParams & {
+  success?: WxFnCallback<StartWifiRes>;
+};
+
+export type StartWifiRes = WxFnCallbackRes;
+
+export type StopWifiParams = WxFnCommonParams & {
+  success?: WxFnCallback<StopWifiRes>;
+};
+
+export type StopWifiRes = WxFnCallbackRes;
+
+export type ConnectWifiParams = WxFnCommonParams & {
+  SSID: string; // 设备SSID
+  BSSID?: string; // 设备BSSID
+  password?: string; // 设备密码
+  success?: WxFnCallback<ConnectWifiRes>;
+};
+
+export type ConnectWifiRes = WxFnCallbackRes;
+
+export type GetWifiListParams = WxFnCommonParams & {
+  success?: WxFnCallback<GetWifiListRes>;
+};
+
+export type GetWifiListRes = WxFnCallbackRes & {
   wifiList: WifiInfo[];
 };
 
@@ -38,7 +57,7 @@ export type GetConnectedWifiParams = WxFnCommonParams & {
   success?: WxFnCallback<GetConnectedWifiRes>;
 };
 
-export type GetConnectedWifiRes = {
+export type GetConnectedWifiRes = WxFnCallbackRes & {
   wifi: WifiInfo;
 };
 
@@ -59,14 +78,23 @@ export interface BluetoothDevice {
   serviceData: ArrayBuffer; // 当前蓝牙设备的广播数据段中的ServiceData数据段
 }
 
-export type OpenBluetoothAdapterParams = WxFnCommonParams;
-export type CloseBluetoothAdapterParams = WxFnCommonParams;
+export type OpenBluetoothAdapterParams = WxFnCommonParams & {
+  success?: WxFnCallback<OpenBluetoothAdapterRes>;
+};
+
+export type OpenBluetoothAdapterRes = WxFnCallbackRes;
+
+export type CloseBluetoothAdapterParams = WxFnCommonParams & {
+  success?: WxFnCallback<CloseBluetoothAdapterRes>;
+};
+
+export type CloseBluetoothAdapterRes = WxFnCallbackRes;
 
 export type GetBluetoothAdapterStateParams = WxFnCommonParams & {
   success?: WxFnCallback<GetBluetoothAdapterStateRes>;
 };
 
-export type GetBluetoothAdapterStateRes = BluetoothInfo;
+export type GetBluetoothAdapterStateRes = WxFnCallbackRes & BluetoothInfo;
 
 export type OnBluetoothAdapterStateChangeCallback = (
   bluetoothInfo: BluetoothInfo
@@ -76,15 +104,22 @@ export type StartBluetoothDevicesDiscoveryParams = WxFnCommonParams & {
   services?: string[]; // 蓝牙设备主 service 的 uuid 列表
   allowDuplicatesKey?: boolean; // 是否允许重复上报同一设备， 如果允许重复上报，则onDeviceFound 方法会多次上报同一设备，但是 RSSI 值会有不同
   interval?: number; // 上报设备的间隔，默认为0，意思是找到新设备立即上报，否则根据传入的间隔上报
+  success?: WxFnCallback<StartBluetoothDevicesDiscoveryRes>;
 };
 
-export type StopBluetoothDevicesDiscoveryParams = WxFnCommonParams;
+export type StartBluetoothDevicesDiscoveryRes = WxFnCallbackRes;
+
+export type StopBluetoothDevicesDiscoveryParams = WxFnCommonParams & {
+  success: WxFnCallback<StopBluetoothDevicesDiscoveryRes>;
+};
+
+export type StopBluetoothDevicesDiscoveryRes = WxFnCallbackRes;
 
 export type GetBluetoothDevicesParams = WxFnCommonParams & {
   success: WxFnCallback<GetBluetoothDevicesRes>;
 };
 
-export type GetBluetoothDevicesRes = {
+export type GetBluetoothDevicesRes = WxFnCallbackRes & {
   devices: BluetoothDevice[]; // uuid 对应的的已连接设备列表
 };
 
@@ -97,17 +132,23 @@ export type GetConnectedBluetoothDevicesParams = WxFnCommonParams & {
   success?: WxFnCallback<GetConnectedBluetoothDevicesRes>;
 };
 
-export type GetConnectedBluetoothDevicesRes = {
+export type GetConnectedBluetoothDevicesRes = WxFnCallbackRes & {
   devices: Array<Pick<BluetoothDevice, "name" | "deviceId">>; // 搜索到的设备列表
 };
 
 export type CreateBLEConnectionParams = WxFnCommonParams & {
   deviceId: string; // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
+  success?: WxFnCallback<CreateBLEConnectionRes>;
 };
+
+export type CreateBLEConnectionRes = WxFnCallbackRes;
 
 export type CloseBLEConnectionParams = WxFnCommonParams & {
   deviceId: string; // 蓝牙设备 id，参考 getDevices 接口
+  success?: WxFnCallback<CloseBLEConnectionRes>;
 };
+
+export type CloseBLEConnectionRes = WxFnCallbackRes;
 
 export type OnBLEConnectionStateChangeRes = {
   deviceId: string; // 蓝牙设备 id，参考 device 对象
@@ -119,7 +160,7 @@ export type GetBLEDeviceServicesParams = WxFnCommonParams & {
   success?: WxFnCallback<GetBLEDeviceServicesRes>;
 };
 
-export type GetBLEDeviceServicesRes = {
+export type GetBLEDeviceServicesRes = WxFnCallbackRes & {
   services: {
     uuid: string; // 蓝牙设备服务的 uuid
     isPrimary: boolean; // 该服务是否为主服务
@@ -143,7 +184,7 @@ export type GetBLEDeviceCharacteristicsParams = WxFnCommonParams & {
   success?: WxFnCallback<GetBLEDeviceCharacteristicsRes>;
 };
 
-export type GetBLEDeviceCharacteristicsRes = {
+export type GetBLEDeviceCharacteristicsRes = WxFnCallbackRes & {
   characteristics: BLEDeviceCharacteristics[];
 };
 
@@ -161,9 +202,12 @@ export type ReadBLECharacteristicValueParams = WxFnCommonParams & {
   serviceId: string;
   // 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
   characteristicId: string;
+  success?: WxFnCallback<ReadBLECharacteristicValueRes>;
 };
 
-export type WriteBLECharacteristicValueParams = {
+export type ReadBLECharacteristicValueRes = WxFnCallbackRes;
+
+export type WriteBLECharacteristicValueParams = WxFnCommonParams & {
   // 这里的 deviceId 需要在上面的 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
   deviceId: string;
   // 这里的 serviceId 需要在上面的 getBLEDeviceServices 接口中获取
@@ -172,9 +216,12 @@ export type WriteBLECharacteristicValueParams = {
   characteristicId: string;
   // 这里的value是ArrayBuffer类型
   value: ArrayBuffer;
+  success?: WxFnCallback<WriteBLECharacteristicValueRes>;
 };
 
-export type NotifyBLECharacteristicValueChangeParams = {
+export type WriteBLECharacteristicValueRes = WxFnCallbackRes;
+
+export type NotifyBLECharacteristicValueChangeParams = WxFnCommonParams & {
   state: boolean; // 启用 notify 功能
   // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
   deviceId: string;
@@ -182,7 +229,10 @@ export type NotifyBLECharacteristicValueChangeParams = {
   serviceId: string;
   // 这里的 characteristicId 需要在上面的 getBLEDeviceCharacteristics 接口中获取
   characteristicId: string;
+  success?: WxFnCallback<NotifyBLECharacteristicValueChangeRes>;
 };
+
+export type NotifyBLECharacteristicValueChangeRes = WxFnCallbackRes;
 
 // 以下为 iBeacon 的接口，详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90534
 export interface Beacon {
@@ -196,15 +246,22 @@ export interface Beacon {
 
 export type StartBeaconDiscoveryParams = WxFnCommonParams & {
   uuids: string[]; // iBeacon设备广播的 uuids
+  success?: WxFnCallback<StartBeaconDiscoveryRes>;
 };
 
-export type StopBeaconDiscoveryParams = WxFnCommonParams;
+export type StartBeaconDiscoveryRes = WxFnCallbackRes;
+
+export type StopBeaconDiscoveryParams = WxFnCommonParams & {
+  success?: WxFnCallback<StopBeaconDiscoveryRes>;
+};
+
+export type StopBeaconDiscoveryRes = WxFnCallbackRes;
 
 export type GetBeaconsParams = WxFnCommonParams & {
   success?: WxFnCallback<GetBeaconsRes>;
 };
 
-export type GetBeaconsRes = {
+export type GetBeaconsRes = WxFnCallbackRes & {
   beacons: Beacon[]; // 当前搜寻到的所有 iBeacon 设备列表
 };
 
@@ -221,13 +278,16 @@ export type OnBeaconServiceChangeRes = {
 
 export type SetClipboardDataParams = WxFnCommonParams & {
   data: string; // 剪贴板的内容
+  success?: WxFnCallback<SetClipboardDataRes>;
 };
+
+export type SetClipboardDataRes = WxFnCallbackRes;
 
 export type GetClipboardDataParams = WxFnCommonParams & {
   success?: WxFnCallback<GetClipboardDataRes>;
 };
 
-export type GetClipboardDataRes = {
+export type GetClipboardDataRes = WxFnCallbackRes & {
   data: string; // 剪贴板的内容
 };
 
@@ -235,7 +295,7 @@ export type GetNetworkTypeParams = WxFnCommonParams & {
   success?: WxFnCallback<GetNetworkTypeRes>;
 };
 
-export type GetNetworkTypeRes = {
+export type GetNetworkTypeRes = WxFnCallbackRes & {
   isConnected: boolean; // 当前是否有网络连接
   networkType: NetworkType;
 };
@@ -248,12 +308,12 @@ export type OpenLocationParams = {
   scale: number; // 地图缩放级别,整形值,范围从1~28。默认为16
 };
 
-export type GetLocationParams = {
+export type GetLocationParams = WxFnCommonParams & {
   type: "wgs84" | "gcj02"; // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
   success?: WxFnCallback<GetLocationRes>;
 };
 
-export type GetLocationRes = {
+export type GetLocationRes = WxFnCallbackRes & {
   latitude: number; // 纬度，浮点数，范围为90 ~ -90
   longitude: number; // 经度，浮点数，范围为180 ~ -180。
   speed: number; // 速度，以米/每秒计
@@ -270,3 +330,7 @@ export type OnLocationChangeRes = {
 export type StartAutoLBSParams = {
   type: "gcj02" | "wgs84"; // wgs84是gps坐标，gcj02是火星坐标
 };
+
+export type startAutoLBSRes = WxInvokeCallbackRes;
+
+export type StopAutoLBSRes = WxInvokeCallbackRes;

@@ -1,11 +1,11 @@
-import { WxFnCallback, WxFnCommonParams } from "./common";
+import { WxFnCallback, WxFnCallbackRes, WxFnCommonParams } from "./common";
 
 export type GetLocalImgDataParams = WxFnCommonParams & {
   localId: string; // 图片的localID
   success?: WxFnCallback<GetLocalImgDataRes>;
 };
 
-export type GetLocalImgDataRes = {
+export type GetLocalImgDataRes = WxFnCallbackRes & {
   localData: string; // base64 数据
 };
 
@@ -18,7 +18,7 @@ export type ChooseImageParams = WxFnCommonParams & {
   success?: WxFnCallback<ChooseImageRes>;
 };
 
-export type ChooseImageRes = {
+export type ChooseImageRes = WxFnCallbackRes & {
   // 返回选定照片的本地ID列表，
   // andriod中localId可以作为img标签的src属性显示图片；
   // iOS应当使用 getLocalImgData 获取图片base64数据，从而用于img标签的显示（在img标签内使用 wx.chooseImage 的 localid 显示可能会不成功）
@@ -32,21 +32,21 @@ export type PreviewImageParams = {
 
 export type UploadImageParams = WxFnCommonParams & {
   localId: string; // 需要上传的图片的本地ID，由chooseImage接口获得
-  isShowProgressTips: 0 | 1; // 默认为1，显示进度提示
+  isShowProgressTips?: 0 | 1; // 默认为1，显示进度提示
   success?: WxFnCallback<UploadImageRes>;
 };
 
-export type UploadImageRes = {
+export type UploadImageRes = WxFnCallbackRes & {
   serverId: string; // 返回图片的服务器端ID
 };
 
 export type DownloadImageParams = WxFnCommonParams & {
   serverId: string; // 需要下载的图片的服务器端ID，由uploadImage接口获得
-  isShowProgressTips: 0 | 1; // 默认为1，显示进度提示
+  isShowProgressTips?: 0 | 1; // 默认为1，显示进度提示
   success?: WxFnCallback<DownloadImageRes>;
 };
 
-export type DownloadImageRes = {
+export type DownloadImageRes = WxFnCallbackRes & {
   localId: string; // 返回图片下载后的本地ID
 };
 
@@ -54,12 +54,12 @@ export type StopRecordParams = WxFnCommonParams & {
   success?: WxFnCallback<StopRecordRes>;
 };
 
-export type StopRecordRes = {
+export type StopRecordRes = WxFnCallbackRes & {
   localId: string;
 };
 
 export type OnVoiceRecordEndParams = WxFnCommonParams & {
-  complete?: WxFnCallback<{ localId: string }>;
+  complete: WxFnCallback<{ localId: string }>;
 };
 
 export type PlayVoiceParams = {
@@ -82,31 +82,31 @@ export type OnVoicePlayEndParams = WxFnCommonParams & {
 
 export type UploadVoiceParams = WxFnCommonParams & {
   localId: string; // 需要上传的音频的本地ID，由stopRecord接口获得
-  isShowProgressTips: 0 | 1; // 默认为1，显示进度提示
+  isShowProgressTips?: 0 | 1; // 默认为1，显示进度提示
   success?: WxFnCallback<UploadVoiceRes>;
 };
 
-export type UploadVoiceRes = {
+export type UploadVoiceRes = WxFnCallbackRes & {
   serverId: string; // 返回音频的服务器端ID
 };
 
 export type DownloadVoiceParams = WxFnCommonParams & {
   serverId: string; // 需要下载的音频的服务器端ID，由uploadVoice接口获得
-  isShowProgressTips: 0 | 1; // 默认为1，显示进度提示
+  isShowProgressTips?: 0 | 1; // 默认为1，显示进度提示
   success?: WxFnCallback<DownloadVoiceRes>;
 };
 
-export type DownloadVoiceRes = {
+export type DownloadVoiceRes = WxFnCallbackRes & {
   localId: string; // 返回音频的本地ID
 };
 
 export type TranslateVoiceParams = WxFnCommonParams & {
   localId: string; // 需要识别的音频的本地Id，由录音相关接口获得，音频时长不能超过60秒
-  isShowProgressTips: 0 | 1; // 默认为1，显示进度提示
+  isShowProgressTips?: 0 | 1; // 默认为1，显示进度提示
   success?: WxFnCallback<TranslateVoiceRes>;
 };
 
-export type TranslateVoiceRes = {
+export type TranslateVoiceRes = WxFnCallbackRes & {
   translateResult: any; // 语音识别的结果
 };
 

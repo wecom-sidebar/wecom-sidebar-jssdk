@@ -33,6 +33,7 @@ export const shareWechatMessage = async () => {
 export const onHistoryBack = () => {
   call("onHistoryBack", () => {
     console.log("onHistoryBack", "监听页面返回事件");
+    return true;
   });
 };
 

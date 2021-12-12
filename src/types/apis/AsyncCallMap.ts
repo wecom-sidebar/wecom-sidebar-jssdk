@@ -1,10 +1,13 @@
 import {
   AgentConfigParams,
+  AgentConfigRes,
   CheckJsApiParams,
   CheckJsApiRes,
+  ConfigParams,
+  ConfigRes,
 } from "../wx/basic";
 import { OpenEnterpriseChatParams, OpenEnterpriseChatRes } from "../wx/session";
-import { ScanQRCodeParams } from "../wx/ui";
+import { ScanQRCodeParams, ScanQRCodeRes } from "../wx/ui";
 import {
   ChooseImageParams,
   ChooseImageRes,
@@ -25,9 +28,13 @@ import {
 } from "../wx/media";
 import {
   CloseBLEConnectionParams,
+  CloseBLEConnectionRes,
   CloseBluetoothAdapterParams,
+  CloseBluetoothAdapterRes,
   ConnectWifiParams,
+  ConnectWifiRes,
   CreateBLEConnectionParams,
+  CreateBLEConnectionRes,
   GetBeaconsParams,
   GetBeaconsRes,
   GetBLEDeviceCharacteristicsParams,
@@ -49,16 +56,29 @@ import {
   GetNetworkTypeParams,
   GetNetworkTypeRes,
   GetWifiListParams,
+  GetWifiListRes,
   NotifyBLECharacteristicValueChangeParams,
+  NotifyBLECharacteristicValueChangeRes,
   OpenBluetoothAdapterParams,
+  OpenBluetoothAdapterRes,
   ReadBLECharacteristicValueParams,
+  ReadBLECharacteristicValueRes,
   SetClipboardDataParams,
+  SetClipboardDataRes,
   StartBeaconDiscoveryParams,
+  StartBeaconDiscoveryRes,
   StartBluetoothDevicesDiscoveryParams,
+  StartBluetoothDevicesDiscoveryRes,
   StartWifiParams,
+  StartWifiRes,
   StopBeaconDiscoveryParams,
+  StopBeaconDiscoveryRes,
+  StopBluetoothDevicesDiscoveryParams,
+  StopBluetoothDevicesDiscoveryRes,
   StopWifiParams,
+  StopWifiRes,
   WriteBLECharacteristicValueParams,
+  WriteBLECharacteristicValueRes,
 } from "../wx/device";
 
 export interface AsyncCallMap {
@@ -68,9 +88,14 @@ export interface AsyncCallMap {
     res: CheckJsApiRes;
   };
 
+  config: {
+    params: ConfigParams;
+    res: ConfigRes;
+  };
+
   agentConfig: {
     params: AgentConfigParams;
-    res: any;
+    res: AgentConfigRes;
   };
 
   // 打开会话，详见：https://open.work.weixin.qq.com/api/doc/90001/90144/93231
@@ -83,7 +108,7 @@ export interface AsyncCallMap {
   // 详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90526
   scanQRCode: {
     params: ScanQRCodeParams;
-    res: any;
+    res: ScanQRCodeRes;
   };
 
   // 以下 API 为图像接口，详见：https://open.work.weixin.qq.com/api/doc/90001/90144/90528
@@ -139,26 +164,25 @@ export interface AsyncCallMap {
   // 打开 Wi-Fi 模块
   startWifi: {
     params: StartWifiParams;
-    res: any;
+    res: StartWifiRes;
   };
 
   // 关闭 Wi-Fi 模块
   stopWifi: {
     params: StopWifiParams;
-    res: any;
+    res: StopWifiRes;
   };
 
   // 连接 Wi-Fi
   connectWifi: {
     params: ConnectWifiParams;
-    res: any;
+    res: ConnectWifiRes;
   };
 
   // 获取 Wi-Fi 列表
   getWifiList: {
     params: GetWifiListParams;
-    // TODO;
-    res: any;
+    res: GetWifiListRes;
   };
 
   // 获取已连接中的 Wi-Fi 信息
@@ -170,13 +194,13 @@ export interface AsyncCallMap {
   // 初始化蓝牙模块
   openBluetoothAdapter: {
     params: OpenBluetoothAdapterParams;
-    res: any;
+    res: OpenBluetoothAdapterRes;
   };
 
   // 关闭蓝牙模块，使其进入未初始化状态。
   closeBluetoothAdapter: {
     params: CloseBluetoothAdapterParams;
-    res: any;
+    res: CloseBluetoothAdapterRes;
   };
 
   // 获取本机蓝牙适配器状态
@@ -188,13 +212,13 @@ export interface AsyncCallMap {
   // 开始搜寻附近的蓝牙外围设备
   startBluetoothDevicesDiscovery: {
     params: StartBluetoothDevicesDiscoveryParams;
-    res: any;
+    res: StartBluetoothDevicesDiscoveryRes;
   };
 
   // 停止搜寻附近的蓝牙外围设备
   stopBluetoothDevicesDiscovery: {
-    params: void;
-    res: any;
+    params: StopBluetoothDevicesDiscoveryParams;
+    res: StopBluetoothDevicesDiscoveryRes;
   };
 
   // 获取在蓝牙模块生效期间所有已发现的蓝牙设备，包括已经和本机处于连接状态的设备
@@ -212,13 +236,13 @@ export interface AsyncCallMap {
   // 连接低功耗蓝牙设备
   createBLEConnection: {
     params: CreateBLEConnectionParams;
-    res: any;
+    res: CreateBLEConnectionRes;
   };
 
   // 断开与低功耗蓝牙设备的连接
   closeBLEConnection: {
     params: CloseBLEConnectionParams;
-    res: any;
+    res: CloseBLEConnectionRes;
   };
 
   // 获取蓝牙设备所有 service（服务）
@@ -235,31 +259,31 @@ export interface AsyncCallMap {
   // 读取低功耗蓝牙设备的特征值的二进制数据值。
   readBLECharacteristicValue: {
     params: ReadBLECharacteristicValueParams;
-    res: any;
+    res: ReadBLECharacteristicValueRes;
   };
 
   // 向低功耗蓝牙设备特征值中写入二进制数据
   writeBLECharacteristicValue: {
     params: WriteBLECharacteristicValueParams;
-    res: any;
+    res: WriteBLECharacteristicValueRes;
   };
 
   // 启用低功耗蓝牙设备特征值变化时的 notify 功能，订阅特征值
   notifyBLECharacteristicValueChange: {
     params: NotifyBLECharacteristicValueChangeParams;
-    res: any;
+    res: NotifyBLECharacteristicValueChangeRes;
   };
 
   // 开始搜索附近的iBeacon设备
   startBeaconDiscovery: {
     params: StartBeaconDiscoveryParams;
-    res: any;
+    res: StartBeaconDiscoveryRes;
   };
 
   // 停止搜索附近的iBeacon设备
   stopBeaconDiscovery: {
     params: StopBeaconDiscoveryParams;
-    res: any;
+    res: StopBeaconDiscoveryRes;
   };
 
   // 获取所有已搜索到的iBeacon设备
@@ -272,7 +296,7 @@ export interface AsyncCallMap {
   // 设置系统剪贴板的内容
   setClipboardData: {
     params: SetClipboardDataParams;
-    res: any;
+    res: SetClipboardDataRes;
   };
 
   // 获取系统剪贴板内容

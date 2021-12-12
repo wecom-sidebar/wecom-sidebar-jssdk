@@ -47,7 +47,6 @@ import {
   OnBLECharacteristicValueChangeRes,
   OnBLEConnectionStateChangeRes,
   OnBluetoothAdapterStateChangeCallback,
-  OnGetWifiListRes,
   OnLocationChangeRes,
   OnNetworkStatusChangeCallbackRes,
   OnWifiConnectedParams,
@@ -64,6 +63,7 @@ import {
   WriteBLECharacteristicValueParams,
 } from "./device";
 import { InvokeMap } from "../apis/InvokeMap";
+import { OnGetWifiListRes } from "../../../@types/types/wx/device";
 
 export interface Wx {
   // 检查 JS Api

@@ -1,3 +1,5 @@
+import { WxInvokeCallbackRes } from "./common";
+
 export type CreateSchoolPaymentParams = {
   projectName?: string; // 收款项目名称
   amount?: number; // 收款金额，每个学生需付费的金额，单位为分
@@ -7,6 +9,6 @@ export type CreateSchoolPaymentParams = {
   };
 };
 
-export type CreateSchoolPaymentRes = {
+export type CreateSchoolPaymentRes = WxInvokeCallbackRes & {
   paymentId: string;
 };

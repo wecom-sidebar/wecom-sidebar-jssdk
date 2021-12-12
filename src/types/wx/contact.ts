@@ -1,4 +1,4 @@
-import { CorpGroupUserId } from "./common";
+import { WxInvokeCallbackRes } from "./common";
 
 export type SelectEnterpriseContactParams = {
   fromDepartmentId: -1 | 0; // 必填，表示打开的通讯录从指定的部门开始展示，-1表示自己所在部门开始, 0表示从最上层开始
@@ -8,7 +8,7 @@ export type SelectEnterpriseContactParams = {
   selectedUserIds?: string[]; // 非必填，已选用户ID列表。用于多次选人时可重入，single模式下请勿填入多个id
 };
 
-export type SelectEnterpriseContactRes = {
+export type SelectEnterpriseContactRes = WxInvokeCallbackRes & {
   result:
     | string
     | {
@@ -29,6 +29,8 @@ export type OpenUserProfileParams = {
   userid: string; // 可以是企业成员，也可以是外部联系人
 };
 
+export type OpenUserProfileRes = WxInvokeCallbackRes;
+
 export type SelectCorpGroupContactParams = {
   fromDepartmentId: -1 | 0; // 必填，表示打开的通讯录从指定的部门开始展示，-1表示打开的通讯录从自己所在部门开始展示, 0表示从最上层开始。移动端，当需要展开的部门不在应用可见范围内，则从应用的可见范围开始展开。
   mode: "single" | "multi"; // 必填，选择模式，single表示单选，multi表示多选
@@ -36,30 +38,53 @@ export type SelectCorpGroupContactParams = {
   selectedDepartmentIds?: string[]; // 非必填，已选部门ID列表。用于多次选人时可重入
   selectedUserIds?: string[]; // 非必填，仅自建应用使用，第三方应用会忽略该字段，已选用户ID列表。用于多次选人时可重入
   selectedOpenUserIds?: string[]; // 非必填，仅第三方应用使用，自建应用会忽略该字段，已选用户ID列表。用于多次选人时可重入
-  selectedCorpGroupDepartmentIds?: {
-    // 非必填，已选企业互联部门ID列表。用于多次选人时可重入
+  selectedChainDepartmentIds?: {
+    // 非必填，已选上下游部门ID列表。用于多次选人时可重入
     corpId: string; // 企业CORPID
     departmentId: string; // 部门ID
   }[];
-  selectedCorpGroupUserIds?: CorpGroupUserId[]; // 非必填，已选企业互联用户ID列表。用于多次选人时可重入
+  selectedChainUserIds?: {
+    // 非必填，已选上下游用户ID列表。用于多次选人时可重入
+    corpId: string; // 企业CORPID
+    userId: string; // 成员ID，仅自建应用返回
+    openUserId: string; // 成员OPEN_USERID，仅第三方应用返回
+  }[];
+  selectedCorpGroupDepartmentIds?: {
+    corpId: string; // 企业CORPID
+    departmentId: string; // 部门ID
+  }[];
+  selectedCorpGroupUserIds?: {
+    corpId: string; // 企业CORPID
+    userId: string; // 成员ID，仅自建应用返回
+    openUserId: string; // 成员OPEN_USERID，仅第三方应用返回
+  }[]; // 非必填，已选企业互联用户ID列表。用于多次选人时可重入
 };
 
-export type SelectCorpGroupContactRes = {
+export type SelectCorpGroupContactRes = WxInvokeCallbackRes & {
   result:
     | string
     | {
-        departmentList: {
+        departmentList?: {
           id: string; // 已选的单个部门ID
         }[];
-        userList: {
+        userList?: {
           id: string; // 已选的单个成员ID，仅自建应用返回
           openUserId: string; // 已选的单个成员ID，仅第三方应用返回
         }[];
-        corpGroupDepartmentList: {
+        corpGroupDepartmentList?: {
           corpId: string; // 企业CORPID
           id: string; // 已选的单个部门ID
         }[];
-        corpGroupUserList: {
+        corpGroupUserList?: {
+          corpId: string; // 企业CORPID
+          id: string; // 已选的单个成员ID，仅自建应用返回
+          openUserId: string; // 已选的单个成员ID，仅第三方应用返回
+        }[];
+        chainDepartmentList?: {
+          corpId: string; // 企业CORPID
+          id: string; // 已选的单个部门ID
+        }[];
+        chainUserList?: {
           corpId: string; // 企业CORPID
           id: string; // 已选的单个成员ID，仅自建应用返回
           openUserId: string; // 已选的单个成员ID，仅第三方应用返回
@@ -85,6 +110,6 @@ export type SelectPrivilegedContactRes = {
   selectedUserCount: number; // 用户选中的用户个数
 };
 
-export type ClaimClassAdminRes = {
+export type ClaimClassAdminRes = WxInvokeCallbackRes & {
   departmentIds: string[]; // 认领的班级部门id列表
 };
