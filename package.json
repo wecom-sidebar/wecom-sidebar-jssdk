@@ -8,7 +8,7 @@
   "types": "@types/index.d.ts",
   "email": "haixiang6123@gmail.com",
   "scripts": {
-    "clean": "rimraf lib dist es coverage types",
+    "clean": "rimraf lib dist es coverage @types",
     "build": "rollup -c",
     "lint": "eslint --ext .js,.ts src --fix",
     "prepare": "husky install",
