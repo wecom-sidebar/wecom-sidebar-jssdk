@@ -1,4 +1,4 @@
-export type EventApi =
+export type FnApi =
   | "onLocationChange"
   | "onHistoryBack"
   | "onGetWifiList"
@@ -10,10 +10,7 @@ export type EventApi =
   | "onBluetoothAdapterStateChange"
   | "onBLEConnectionStateChange"
   | "onBLECharacteristicValueChange"
-  | "onUserCaptureScreen";
-
-// 需要异步操作逻辑的 wx.fn
-export type AsyncCallApi =
+  | "onUserCaptureScreen"
   | "checkJsApi"
   | "stopRecord"
   | "uploadVoice"
@@ -49,10 +46,7 @@ export type AsyncCallApi =
   | "startBeaconDiscovery"
   | "stopBeaconDiscovery"
   | "agentConfig"
-  | "config";
-
-// 所有同步 wx.fn 的 api
-export type SyncCallApi =
+  | "config"
   | "startRecord"
   | "playVoice"
   | "pauseVoice"
@@ -110,7 +104,7 @@ export type InvokeApi =
   | "updateMomentsSetting"
   | "openThirdAppServiceChat";
 
-export type Api = AsyncCallApi | SyncCallApi | InvokeApi | EventApi;
+export type Api = FnApi | InvokeApi;
 
 /**
  * 所有企业微信 SDK 的回调返回类型
