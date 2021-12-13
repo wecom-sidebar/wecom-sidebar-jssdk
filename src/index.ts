@@ -22,7 +22,7 @@ export const asyncCall = async <K extends keyof AsyncCallMap>(
   }
 
   infoLog(`asyncCall: 调用 wx.${apiName}, 入参:`, params);
-  const mockValue = window.wxResMock[apiName] || "";
+  const mockValue = window.wxResMock ? window.wxResMock[apiName] : "";
   const mockRes =
     typeof mockValue === "function"
       ? await mockValue(apiName, params)
@@ -76,7 +76,7 @@ export const invoke = async <K extends keyof InvokeMap>(
   }
 
   infoLog(`invoke: wx.invoke('${apiName}'), 入参:`, params);
-  const mockValue = window.invokeResMock[apiName] || "";
+  const mockValue = window.invokeResMock ? window.invokeResMock[apiName] : "";
   const mockRes =
     typeof mockValue === "function" ? mockValue(apiName, params) : mockValue;
   infoLog(`invoke: 调用 wx.invoke('${apiName}'), 返回:`, mockRes);

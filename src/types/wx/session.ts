@@ -86,7 +86,7 @@ export type GetShareInfoParams = {
 
 export type GetShareInfoRes = WxInvokeCallbackRes & {
   encryptedData: string; // 转发信息的加密数据
-  iv: string; //	加密算法的初始向量
+  iv: string; // 加密算法的初始向量
 };
 
 export type CreateCorpGroupChatParams = {
