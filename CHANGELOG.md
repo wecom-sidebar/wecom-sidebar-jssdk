@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.7...v0.0.8) (2021-12-13)
+
+
+### Features
+
+* 更新 callback 名 ([e9ce55a](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/e9ce55aecf3d92d763b684531eec6134cfb1a22a))
+* 更新入口 ([f7bd81e](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/f7bd81ebaa808a538a2f335c08a4a67dcaf6fcdd))
+* 添加防御编程 ([84b3137](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/84b31371f2d51d16a944e913e579fede3d294d73))
+
+
+### Bug Fixes
+
+* 修复 listen not found 的问题 ([fb8746b](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/fb8746b4e423466445328af548c9dcecad881722))
+
 ### [0.0.7](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.6...v0.0.7) (2021-12-13)
 
 ### [0.0.6](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.5...v0.0.6) (2021-12-13)
