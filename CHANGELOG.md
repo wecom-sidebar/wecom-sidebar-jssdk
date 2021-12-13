@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.4...v0.0.5) (2021-12-13)
+
+
+### Features
+
+* 更新 Api type ([cf255bf](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/cf255bf8745687f5e462de24ef7e1c2b790f51db))
+* 添加 publish 脚本 ([b4ee532](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/b4ee532eff1cf82ac83de331c9f25e6c2fbfb0d8))
+
 ### [0.0.4](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.3...v0.0.4) (2021-12-12)
 
 
