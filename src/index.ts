@@ -11,6 +11,9 @@ import { CallMap } from "./types/apis/CallMap";
 import { Config, GetSignatures, GetUserId } from "./types/common";
 import { InvokeMap } from "./types/apis/InvokeMap";
 
+// mock 类型
+export * from "./types/apis/mock";
+
 export const wxApis = _wxApis;
 
 export const asyncCall = async <K extends keyof AsyncCallMap>(
