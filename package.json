@@ -14,7 +14,8 @@
     "prepare": "husky install",
     "test": "jest",
     "prepublishOnly": "npm run clean && npm test",
-    "release": "standard-version && git push --follow-tags origin"
+    "release": "standard-version && git push --follow-tags origin",
+    "publish": "npm run lint && npm run test && npm run clean && npm run build && npm run release && npm publish"
   },
   "files": [
     "dist",
