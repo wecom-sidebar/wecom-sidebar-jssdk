@@ -1,6 +1,6 @@
 {
   "name": "wecom-sidebar-jssdk",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "更高抽象的企业微信 JS-SDK 封装",
   "main": "lib/jsSdk.js",
   "unpkg": "dist/jsSdk.js",
