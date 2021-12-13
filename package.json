@@ -21,7 +21,7 @@
     "lib",
     "es",
     "src",
-    "types"
+    "@types"
   ],
   "repository": {
     "type": "git",
