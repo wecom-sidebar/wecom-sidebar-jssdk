@@ -15,7 +15,7 @@ export interface WifiInfo {
   signalStrength: number; // Wi-Fi 信号强度
 }
 
-export type OnNetworkStatusChangeCallbackRes = {
+export type OnNetworkStatusChangeRes = {
   isConnected: boolean;
   networkType: NetworkType;
 };
@@ -95,10 +95,6 @@ export type GetBluetoothAdapterStateParams = WxFnCommonParams & {
 };
 
 export type GetBluetoothAdapterStateRes = WxFnCallbackRes & BluetoothInfo;
-
-export type OnBluetoothAdapterStateChangeCallback = (
-  bluetoothInfo: BluetoothInfo
-) => void;
 
 export type StartBluetoothDevicesDiscoveryParams = WxFnCommonParams & {
   services?: string[]; // 蓝牙设备主 service 的 uuid 列表

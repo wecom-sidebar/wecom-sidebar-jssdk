@@ -17,13 +17,13 @@ import {
 } from "../wx/media";
 import {
   BluetoothDevice,
+  BluetoothInfo,
   OnBeaconServiceChangeRes,
   OnBeaconUpdateRes,
   OnBLECharacteristicValueChangeRes,
   OnBLEConnectionStateChangeRes,
-  OnBluetoothAdapterStateChangeCallback,
   OnLocationChangeRes,
-  OnNetworkStatusChangeCallbackRes,
+  OnNetworkStatusChangeRes,
   OpenLocationParams,
   WifiInfo,
 } from "../wx/device";
@@ -110,7 +110,7 @@ export interface CallMap {
   };
 
   onNetworkStatusChange: {
-    params: (params: OnNetworkStatusChangeCallbackRes) => void;
+    params: (params: OnNetworkStatusChangeRes) => void;
     res: void;
   };
 
@@ -176,7 +176,7 @@ export interface CallMap {
 
   // 监听蓝牙适配器状态变化事件
   onBluetoothAdapterStateChange: {
-    params: OnBluetoothAdapterStateChangeCallback;
+    params: (res: { bluetoothInfo: BluetoothInfo }) => void;
     res: void;
   };
 

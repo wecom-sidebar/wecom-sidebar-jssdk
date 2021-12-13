@@ -48,7 +48,7 @@ import {
   OnBLEConnectionStateChangeRes,
   OnBluetoothAdapterStateChangeCallback,
   OnLocationChangeRes,
-  OnNetworkStatusChangeCallbackRes,
+  OnNetworkStatusChangeRes,
   OnWifiConnectedParams,
   OpenBluetoothAdapterParams,
   OpenLocationParams,
@@ -133,7 +133,7 @@ export interface Wx {
   chooseImage: (params: ChooseImageParams) => void;
 
   onNetworkStatusChange: (
-    callback: (params: OnNetworkStatusChangeCallbackRes) => void
+    callback: (params: OnNetworkStatusChangeRes) => void
   ) => void;
 
   // 预览图片接口
