@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import { listen } from "wecom-sidebar-jssdk";
+import { call } from "wecom-sidebar-jssdk";
 import {
   closeBluetoothAdapter,
   getBLEDeviceCharacteristics,
@@ -158,7 +158,7 @@ const Device: FC = () => {
         checked={switches.onLocationChange}
         onChange={() => {
           setSwitches({...switches, onLocationChange: true});
-          listen('onLocationChange', (res: any) => {
+          call('onLocationChange', (res: any) => {
             logInfo('onLocationChange', JSON.stringify(res));
           })
         }}
