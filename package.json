@@ -1,6 +1,6 @@
 {
   "name": "wecom-sidebar-jssdk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "更高抽象的企业微信 JS-SDK 封装",
   "main": "lib/jsSdk.js",
   "unpkg": "dist/jsSdk.js",
@@ -13,9 +13,8 @@
     "lint": "eslint --ext .js,.ts src --fix",
     "prepare": "husky install",
     "test": "jest",
-    "prepublishOnly": "npm run clean && npm test",
     "release": "standard-version && git push --follow-tags origin",
-    "publish": "npm run lint && npm run test && npm run clean && npm run build && npm run release && npm publish"
+    "prepublish": "npm run lint && npm run clean && npm test && npm run build && npm run release"
   },
   "files": [
     "dist",
