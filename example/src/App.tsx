@@ -24,7 +24,7 @@ const App: FC = () => {
   useEffect(() => {
     asyncCall('checkJsApi', { jsApiList: wxApis })
       .then((res: any) => {
-        const enabledList = Object.entries(res.checkResult).reduce<string[]>((prevList, [key, value]) => {
+        const enabledList = Object.entries(res.checkResult || {}).reduce<string[]>((prevList, [key, value]) => {
           if (value) {
             prevList.push(key);
           }
