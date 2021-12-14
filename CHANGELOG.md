@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.11...v0.0.12) (2021-12-14)
+
+
+### Features
+
+* 添加对全局 Mock 的判断 ([752b42b](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/752b42b5c3b67e5091b4641c46e1807fbf29f0f0))
+
+
+### Bug Fixes
+
+* 添加防御编程 ([dc2d254](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/dc2d254553d71018856d5577175cc3c73b0314c6))
+
 ### [0.0.11](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.10...v0.0.11) (2021-12-13)
 
 
