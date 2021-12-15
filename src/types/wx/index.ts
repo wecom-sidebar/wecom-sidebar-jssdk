@@ -41,12 +41,12 @@ import {
   GetLocationParams,
   GetNetworkTypeParams,
   GetWifiListParams,
+  OnGetWifiListRes,
   NotifyBLECharacteristicValueChangeParams,
   OnBeaconServiceChangeRes,
   OnBeaconUpdateRes,
   OnBLECharacteristicValueChangeRes,
   OnBLEConnectionStateChangeRes,
-  OnBluetoothAdapterStateChangeCallback,
   OnLocationChangeRes,
   OnNetworkStatusChangeRes,
   OnWifiConnectedParams,
@@ -61,9 +61,9 @@ import {
   StopBluetoothDevicesDiscoveryParams,
   StopWifiParams,
   WriteBLECharacteristicValueParams,
+  OnGetBluetoothAdapterStateRes,
 } from "./device";
 import { InvokeMap } from "../apis/InvokeMap";
-import { OnGetWifiListRes } from "../../../@types/types/wx/device";
 
 export interface Wx {
   // 检查 JS Api
@@ -211,7 +211,7 @@ export interface Wx {
 
   // 监听蓝牙适配器状态变化事件
   onBluetoothAdapterStateChange: (
-    callback: OnBluetoothAdapterStateChangeCallback
+    callback: (res: OnGetBluetoothAdapterStateRes) => void
   ) => void;
 
   // 开始搜寻附近的蓝牙外围设备

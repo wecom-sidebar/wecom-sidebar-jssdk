@@ -15,13 +15,9 @@ export interface SignRes {
     url: string;
   };
   app: {
-    ticket: string;
-    expires: number;
     signature: string;
   };
   corp: {
-    ticket: string;
-    expires: number;
     signature: string;
   };
 }

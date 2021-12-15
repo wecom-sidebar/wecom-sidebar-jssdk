@@ -1,8 +1,10 @@
 /// <reference types="react-scripts" />
 import { JsSDK } from "./lib/jsSdk";
+import { Wx } from "wecom-sidebar-jssdk";
 
 declare global {
   interface Window {
+    wx: Wx;
     // 外部控制是否为 mock
     _isMock?: boolean;
     // mock userId

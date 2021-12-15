@@ -5,16 +5,17 @@ import _checkRedirect from "./apis/checkRedirect";
 import _initSdk from "./apis/initSdk";
 import _invoke from "./apis/invoke";
 import { infoLog } from "./utils/log";
-import { AsyncCallMap } from "./types/apis/AsyncCallMap";
-import { CallMap } from "./types/apis/CallMap";
-import { Config, GetSignatures, GetUserId } from "./types/common";
-import { InvokeMap } from "./types/apis/InvokeMap";
-import { InvokeResMock, WxResMock } from "./types/apis/mock";
+import { AsyncCallMap } from "./types";
+import { CallMap } from "./types";
+import { Config, GetSignatures, GetUserId } from "./types";
+import { InvokeMap } from "./types";
+import { InvokeResMock, WxResMock } from "./types";
 
-// mock 类型
-export * from "./types/apis/mock";
-
+// 所有 API
 export const wxApis = _wxApis;
+
+// 重要类型
+export * from "./types";
 
 // 异步调用 wx.fn
 export const asyncCall = async <K extends keyof AsyncCallMap>(

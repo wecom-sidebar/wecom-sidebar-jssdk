@@ -42,10 +42,10 @@ export type ConnectWifiParams = WxFnCommonParams & {
 export type ConnectWifiRes = WxFnCallbackRes;
 
 export type GetWifiListParams = WxFnCommonParams & {
-  success?: WxFnCallback<GetWifiListRes>;
+  success?: WxFnCallback<OnGetWifiListRes>;
 };
 
-export type GetWifiListRes = WxFnCallbackRes & {
+export type OnGetWifiListRes = WxFnCallbackRes & {
   wifiList: WifiInfo[];
 };
 
@@ -91,10 +91,10 @@ export type CloseBluetoothAdapterParams = WxFnCommonParams & {
 export type CloseBluetoothAdapterRes = WxFnCallbackRes;
 
 export type GetBluetoothAdapterStateParams = WxFnCommonParams & {
-  success?: WxFnCallback<GetBluetoothAdapterStateRes>;
+  success?: WxFnCallback<OnGetBluetoothAdapterStateRes>;
 };
 
-export type GetBluetoothAdapterStateRes = WxFnCallbackRes & BluetoothInfo;
+export type OnGetBluetoothAdapterStateRes = WxFnCallbackRes & BluetoothInfo;
 
 export type StartBluetoothDevicesDiscoveryParams = WxFnCommonParams & {
   services?: string[]; // 蓝牙设备主 service 的 uuid 列表

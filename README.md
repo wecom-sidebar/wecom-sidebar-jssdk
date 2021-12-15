@@ -42,6 +42,8 @@ await checkRedirect(config, fetchUserId)
 初始化 JS-SDK 的重要方法！自动包含了 `wx.config`，`wx.ready`，`wx.agentConfig` 的逻辑，并支持 Promise 异步，帮你一步到位初始化。
 
 ```ts
+import {SignRes} from "wecom-sidebar-jssdk";
+
 // 侧边栏配置
 const config = {
   // 在 https://work.weixin.qq.com/wework_admin/frame#profile 这里可以找到
@@ -50,23 +52,19 @@ const config = {
   agentId: 'yyy'
 }
 
-interface SignRes {
-  meta: {
-    nonceStr: string,
-    timestamp: number,
-    url: string,
-  },
-  app: {
-    ticket: string, // 应用 jsapi_ticket
-    expires: number, // 应用 jsapi_ticket 过期时间
-    signature: string, // 应用 jsapi_ticket 生成的签名
-  },
-  corp: {
-    ticket: string, // 企业 jsapi_ticket
-    expires: number, // 企业 jsapi_ticket 过期时间
-    signature: string, // 企业的 jsapi_ticket 生成的签名
-  },
-}
+// interface SignRes {
+//   meta: {
+//     nonceStr: string,
+//     timestamp: number,
+//     url: string,
+//   },
+//   app: {
+//     signature: string, // 应用 jsapi_ticket 生成的签名
+//   },
+//   corp: {
+//     signature: string, // 企业的 jsapi_ticket 生成的签名
+//   },
+// }
 
 // 获取签名
 export const fetchSignatures = async () => {

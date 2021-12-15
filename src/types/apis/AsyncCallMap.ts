@@ -42,7 +42,7 @@ import {
   GetBLEDeviceServicesParams,
   GetBLEDeviceServicesRes,
   GetBluetoothAdapterStateParams,
-  GetBluetoothAdapterStateRes,
+  OnGetBluetoothAdapterStateRes,
   GetBluetoothDevicesParams,
   GetBluetoothDevicesRes,
   GetClipboardDataParams,
@@ -56,7 +56,7 @@ import {
   GetNetworkTypeParams,
   GetNetworkTypeRes,
   GetWifiListParams,
-  GetWifiListRes,
+  OnGetWifiListRes,
   NotifyBLECharacteristicValueChangeParams,
   NotifyBLECharacteristicValueChangeRes,
   OpenBluetoothAdapterParams,
@@ -182,7 +182,7 @@ export interface AsyncCallMap {
   // 获取 Wi-Fi 列表
   getWifiList: {
     params: GetWifiListParams;
-    res: GetWifiListRes;
+    res: OnGetWifiListRes;
   };
 
   // 获取已连接中的 Wi-Fi 信息
@@ -206,7 +206,7 @@ export interface AsyncCallMap {
   // 获取本机蓝牙适配器状态
   getBluetoothAdapterState: {
     params: GetBluetoothAdapterStateParams;
-    res: GetBluetoothAdapterStateRes;
+    res: OnGetBluetoothAdapterStateRes;
   };
 
   // 开始搜寻附近的蓝牙外围设备
