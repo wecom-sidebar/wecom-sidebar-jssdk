@@ -7,7 +7,6 @@ import {checkRedirect, initSdk} from "wecom-sidebar-jssdk";
 import App from './App'
 import {fetchSignatures, fetchUserId} from './http'
 import config from './_config'
-import {mockUserId} from "./mock";
 
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/lib/locale/zh_CN';
@@ -39,7 +38,7 @@ const render = async (props: any) => {
 
 // 单独应用
 if (!window.__POWERED_BY_QIANKUN__) {
-  checkRedirect(config, fetchUserId, mockUserId)
+  checkRedirect(config, fetchUserId)
     .then(() => initSdk(config, fetchSignatures))
     .catch(() => message.error('JS-SDK 初始化失败'))
     .finally(() => render({}));
