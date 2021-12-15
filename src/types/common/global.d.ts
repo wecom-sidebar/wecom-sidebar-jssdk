@@ -5,12 +5,12 @@ declare global {
   interface Window {
     wx: Wx;
     // 外部控制是否为 mock
-    isMock?: boolean;
+    _isMock?: boolean;
     // mock userId
-    mockUserId: string;
+    _mockUserId: string;
     // wx.invoke 里的 Mock 关系表，apiName -> result
-    invokeResMock?: Partial<JsSDK>;
+    _invokeResMock?: Partial<JsSDK>;
     // 企业微信的 JsSdk 的 Mock 关系表，fnName -> result
-    wxResMock?: Partial<JsSDK>;
+    _wxResMock?: Partial<JsSDK>;
   }
 }
