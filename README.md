@@ -219,6 +219,8 @@ setIsMock(true) // 开启 Mock 环境
 setIsMock(false) // 关闭 Mock 环境
 ```
 
+当然你直接 `window._isMock = true/false` 来设置也是可以的。
+
 ### setMockUserId
 
 在 Mock 环境下，自动读取 `window._mockUserId` 值，此方法为设置该值：
@@ -227,9 +229,14 @@ setIsMock(false) // 关闭 Mock 环境
 setMockUserId('xiaoming');
 ```
 
+当然你直接 `window._mockUserId = 'xxx'` 来设置也是可以的。
+
 ### setWxResMock
 
-在 Mock 环境下，当调用 `asyncCall` 或 `call` 时，自动 `window._wxResMock` 里拿 mock value，如果 mock function，则会执行：
+在 Mock 环境下，当调用 `asyncCall` 或 `call` 时，自动 `window._wxResMock` 里拿 mock value 作为返回值，如果 mock function，
+则会直接执行并返回。
+
+使用示例：
 
 ```js
 wxResMock = {
@@ -246,9 +253,14 @@ const hello = await asyncCall('agentConfig', config); // 打印 mock agent confi
 const ok = call('startRecord') // 返回 'ok'
 ```
 
+当然你直接 `window._wxResMock = { ... }` 来设置也是可以的。
+
 ### setInvokeResMock
 
-在 Mock 环境下，当调用 `invoke` 时，自动 `window._invokeResMock` 里拿 mock value，如果 mock function，则会执行：
+在 Mock 环境下，当调用 `invoke` 时，自动 `window._invokeResMock` 里拿 mock value 作为返回值，如果为 mock function，
+则会直接执行并返回。
+
+使用示例：
 
 ```js
 const invokeResMock = {
@@ -264,3 +276,4 @@ await invoke('getCurExternalContact'); // 返回 { userId: 'xxx' }
 await invoke('openUserProfile', { ... }) // 返回 'yyy'
 ```
 
+当然你直接 `window._invokeResMock = { ... }` 来设置也是可以的。
