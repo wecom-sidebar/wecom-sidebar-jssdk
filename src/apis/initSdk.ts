@@ -32,7 +32,7 @@ const configAndReady = (
   setting: ConfigParams
 ): Promise<WxFnCallbackRes | null> => {
   return new Promise((resolve) => {
-    if (window.isMock) {
+    if (window._isMock) {
       console.log("调用 config，入参", setting);
       return resolve(null);
     }

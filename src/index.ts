@@ -9,7 +9,7 @@ import { AsyncCallMap } from "./types/apis/AsyncCallMap";
 import { CallMap } from "./types/apis/CallMap";
 import { Config, GetSignatures, GetUserId } from "./types/common";
 import { InvokeMap } from "./types/apis/InvokeMap";
-import { InvokeResMock, WxResMock } from "../@types";
+import { InvokeResMock, WxResMock } from "./types/apis/mock";
 
 // mock 类型
 export * from "./types/apis/mock";
@@ -53,13 +53,9 @@ export const call = <K extends keyof CallMap>(
 };
 
 // 检查是否重定向，并设置 userId
-export const checkRedirect = async (
-  config: Config,
-  getUserId: GetUserId,
-  mockUserId?: string
-) => {
+export const checkRedirect = async (config: Config, getUserId: GetUserId) => {
   if (!window._isMock) {
-    return _checkRedirect(config, getUserId, mockUserId);
+    return _checkRedirect(config, getUserId);
   }
 
   infoLog("checkRedirect: 当前 userId:", window._mockUserId);
