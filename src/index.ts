@@ -4,23 +4,24 @@ import _call from "./apis/call";
 import _checkRedirect from "./apis/checkRedirect";
 import _initSdk from "./apis/initSdk";
 import _invoke from "./apis/invoke";
-import { isMock } from "./utils/mock";
 import { infoLog } from "./utils/log";
 import { AsyncCallMap } from "./types/apis/AsyncCallMap";
 import { CallMap } from "./types/apis/CallMap";
 import { Config, GetSignatures, GetUserId } from "./types/common";
 import { InvokeMap } from "./types/apis/InvokeMap";
+import { InvokeResMock, WxResMock } from "../@types";
 
 // mock 类型
 export * from "./types/apis/mock";
 
 export const wxApis = _wxApis;
 
+// 异步调用 wx.fn
 export const asyncCall = async <K extends keyof AsyncCallMap>(
   apiName: K,
   params: AsyncCallMap[K]["params"] = {}
 ): Promise<AsyncCallMap[K]["res"]> => {
-  if (!isMock) {
+  if (!window.isMock) {
     return _asyncCall<K>(apiName, params);
   }
 
@@ -34,11 +35,12 @@ export const asyncCall = async <K extends keyof AsyncCallMap>(
   return mockRes;
 };
 
+// 同步调用 wx.fn
 export const call = <K extends keyof CallMap>(
   apiName: K,
   params: CallMap[K]["params"] = {}
 ) => {
-  if (!isMock) {
+  if (!window.isMock) {
     return _call(apiName, params);
   }
 
@@ -50,31 +52,34 @@ export const call = <K extends keyof CallMap>(
   return mockRes;
 };
 
+// 检查是否重定向，并设置 userId
 export const checkRedirect = async (
   config: Config,
   getUserId: GetUserId,
   mockUserId?: string
 ) => {
-  if (!isMock) {
+  if (!window.isMock) {
     return _checkRedirect(config, getUserId, mockUserId);
   }
 
   infoLog("checkRedirect: 当前 userId:", window.mockUserId);
 };
 
+// 初始化 SDK
 export const initSdk = async (config: Config, getSignatures: GetSignatures) => {
-  if (!isMock) {
+  if (!window.isMock) {
     return _initSdk(config, getSignatures);
   }
 
   infoLog("initSdk: 传入配置:", config);
 };
 
+// 调用 wx.invoke
 export const invoke = async <K extends keyof InvokeMap>(
   apiName: K,
   params: InvokeMap[K]["params"] = {}
 ): Promise<InvokeMap[K]["res"]> => {
-  if (!isMock) {
+  if (!window.isMock) {
     return _invoke<K>(apiName, params);
   }
 
@@ -86,4 +91,24 @@ export const invoke = async <K extends keyof InvokeMap>(
     typeof mockValue === "function" ? mockValue(apiName, params) : mockValue;
   infoLog(`invoke: 调用 wx.invoke('${apiName}'), 返回:`, mockRes);
   return mockRes;
+};
+
+// 手动设置是否是 Mock 环境
+export const setIsMock = (isMock: boolean) => {
+  // 根据外部判断是否为 mock 环境
+  const isWindowMock = window.isMock === true;
+  // 根据宿主环境判断是否要 mock
+  const isHostMock = !navigator.userAgent.toLowerCase().includes("wxwork");
+  // 全局设置 Mock，自动判断 Mock，手动 Mock
+  return isWindowMock || isHostMock || isMock;
+};
+
+// 设置 wx.fn 的 mock 结果
+export const setWxResMock = (wxResMock: WxResMock) => {
+  window.wxResMock = wxResMock;
+};
+
+// 设置 wx.invoke 的 mock 结果
+export const setInvokeResMock = (invokeResMock: InvokeResMock) => {
+  window.invokeResMock = invokeResMock;
 };

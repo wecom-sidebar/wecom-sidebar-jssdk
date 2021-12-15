@@ -1,4 +1,3 @@
-import { isMock } from "../utils/mock";
 import queryParse from "../utils/queryParse";
 import cookies from "../utils/cookies";
 import { Config, GetUserId } from "../types/common";
@@ -37,7 +36,7 @@ const checkRedirect = async (
   getUserId: GetUserId,
   mockUserId?: string
 ) => {
-  if (isMock) {
+  if (window.isMock) {
     // 使用 mock 的 userId
     if (mockUserId || window.mockUserId) {
       cookies.set("userId", mockUserId || window.mockUserId);

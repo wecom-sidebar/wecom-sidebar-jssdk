@@ -1,5 +1,4 @@
 import wxApis from "../constants/wxApis";
-import { isMock } from "../utils/mock";
 import asyncCall from "./asyncCall";
 import compareVersions from "../utils/compareVersions";
 import { WxFnCallbackRes } from "../types/wx/common";
@@ -33,7 +32,7 @@ const configAndReady = (
   setting: ConfigParams
 ): Promise<WxFnCallbackRes | null> => {
   return new Promise((resolve) => {
-    if (isMock) {
+    if (window.isMock) {
       console.log("调用 config，入参", setting);
       return resolve(null);
     }
