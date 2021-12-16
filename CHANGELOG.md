@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.17...v0.0.18) (2021-12-16)
+
+
+### Features
+
+* 将部分内容转移到文档上 ([8e382b3](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/8e382b3fdb1412a76811f1834ae0bc6bd83398b9))
+
 ### [0.0.17](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.16...v0.0.17) (2021-12-16)
 
 
