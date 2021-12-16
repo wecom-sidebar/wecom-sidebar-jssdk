@@ -11,34 +11,77 @@ npm i wecom-sidebar-jssdk
 ## 简单上手
 
 ```ts
-import {invoke, asyncCall, call} from 'wecom-sidebar-jssdk';
+import {checkRedirect, initSdk, invoke, asyncCall, call} from 'wecom-sidebar-jssdk';
 
-try {
-  // 获取外部联系人 external_user_id
-  const res1 = await invoke('getCurExternalContact');
-  console.log(res1.userId);
-
-  // 拍照或从手机相册中选图接口
-  const res2 = await asyncCall('chooseImage');
-  console.log(res2.localIds);
-
-  // 设置监听
-  call('onNetworkStatusChange', (res) => {
-    console.log(res.isConnected)
-    console.log(res.networkType)
-  })
-} catch (e) {
-  console.log(e.message);
+// 侧边栏配置
+const config = {
+  // 在 https://work.weixin.qq.com/wework_admin/frame#profile 这里可以找到
+  corpId: 'xxx',
+  // 在 https://work.weixin.qq.com/wework_admin/frame#apps 里的自建应用里可以找到
+  agentId: 'yyy'
 }
 
-// 支持原始调用方式
-wx.invoke('getCurExternalContact', {}, function (res) {
-  if (res.err_msg == "getCurExternalContact:ok") {
-    userId = res.userId; //返回当前外部联系人userId
-  } else {
-    //错误处理
+// 获取签名
+export const fetchSignatures = async () => {
+  const response = await axios.request<SignRes>({
+    method: 'GET',
+    url: '/signatures',
+    params: {
+      url: window.location.href
+    }
+  })
+
+  return response.data;
+}
+
+// code 换取用户身份
+const fetchUserId = async (code: string): Promise<string> => {
+  const response = await axios.request({
+    method: 'GET',
+    url: '/user',
+    params: {code}
+  });
+  return response.data.userId;
+}
+
+const render = () => {
+  // 渲染 App
+}
+
+const testApi = async () => {
+  try {
+    // 获取外部联系人 external_user_id
+    const res1 = await invoke('getCurExternalContact');
+    console.log(res1.userId);
+
+    // 拍照或从手机相册中选图接口
+    const res2 = await asyncCall('chooseImage');
+    console.log(res2.localIds);
+
+    // 设置监听
+    call('onNetworkStatusChange', (res) => {
+      console.log(res.isConnected)
+      console.log(res.networkType)
+    })
+  } catch (e) {
+    console.log(e.message);
   }
-});
+
+  // 支持原始调用方式
+  wx.invoke('getCurExternalContact', {}, function (res) {
+    if (res.err_msg == "getCurExternalContact:ok") {
+      userId = res.userId; //返回当前外部联系人userId
+    } else {
+      //错误处理
+    }
+  });
+}
+
+checkRedirect(config, fetchUserId)
+  .then(() => initSdk(config, fetchSignatures))
+  .then(() => testApi)
+  .catch(() => console.error('JS-SDK 初始化失败'))
+  .finally(() => render());
 ```
 
 ## 为什么
