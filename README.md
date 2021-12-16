@@ -11,7 +11,7 @@ npm i wecom-sidebar-jssdk
 ## 简单上手
 
 ```ts
-import {checkRedirect, initSdk, invoke, asyncCall, call} from 'wecom-sidebar-jssdk';
+import {checkRedirect, initSdk, invoke, asyncCall, call, SignRes} from 'wecom-sidebar-jssdk';
 
 // 侧边栏配置
 const config = {
@@ -22,7 +22,7 @@ const config = {
 }
 
 // 获取签名
-export const fetchSignatures = async () => {
+export const fetchSignatures = async (): Promise<SignRes> => {
   const response = await axios.request<SignRes>({
     method: 'GET',
     url: '/signatures',
@@ -42,10 +42,6 @@ const fetchUserId = async (code: string): Promise<string> => {
     params: {code}
   });
   return response.data.userId;
-}
-
-const render = () => {
-  // 渲染 App
 }
 
 const testApi = async () => {
@@ -75,6 +71,10 @@ const testApi = async () => {
       //错误处理
     }
   });
+}
+
+const render = () => {
+  // 渲染 App
 }
 
 checkRedirect(config, fetchUserId)
