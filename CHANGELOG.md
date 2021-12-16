@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.15...v0.0.16) (2021-12-16)
+
+
+### Features
+
+* 更新 mock 说明 ([585c1be](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/585c1befca00e9b8db307861f21858a18f3614cb))
+* 更新了 Mock Sdk 部分 ([86ab962](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/86ab962ea16f47645173815a065baeafac549873))
+* 添加注释 ([7ec63db](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/7ec63db3bb444edd5c174000ea9b7fcd25b013ce))
+
 ### [0.0.15](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.14...v0.0.15) (2021-12-16)
 
 
