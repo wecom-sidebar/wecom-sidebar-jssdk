@@ -2,6 +2,7 @@
   "name": "wecom-sidebar-api-test",
   "version": "0.1.0",
   "private": true,
+  "keywords": ["企业微信", "侧边栏", "jssdk", "wxwork", "jwxwork", "JS-SDK", "客户端API"],
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.9",
