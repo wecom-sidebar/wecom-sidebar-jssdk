@@ -18,7 +18,7 @@ npm i wecom-sidebar-jssdk
 
 ## 简单上手
 
-![文档在此](https://wecom-sidebar.github.io/)
+[文档在此](https://wecom-sidebar.github.io/)
 
 上手代码需要用到后端调用 [企业微信服务端 API](https://work.weixin.qq.com/api/doc/90001/90143/91201) 的能力，
 如果你还没有做好的后端，可以直接使用 [我做好的 Express Demo](https://github.com/wecom-sidebar/wecom-sidebar-express-tpl) 来提供接口。
