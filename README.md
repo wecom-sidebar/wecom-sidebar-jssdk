@@ -322,6 +322,8 @@ console.log(res.userId);
 
 它的实现原理是将前面的一些调用方法都自动屏蔽了，也可以说是 Mock 掉。由于 SDK 是可以 Mock 的， 那么我也留了一个入口给大家，可以 Mock `wx.fn` 和 `wx.invoke` 的不同返回值。
 
+**如果你什么 Mock 都不设置，wecom-sidebar-jssdk 将会自动根据 navigator.userAgent 来判断当前是否为侧边栏环境。对于非侧边栏环境，会自动开启 Mock，并自动生成 Mock 内容。**
+
 下面都是一些相关的 Setter 操作。
 
 ### setIsMock
