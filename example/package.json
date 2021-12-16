@@ -24,9 +24,9 @@
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true BROWSER=none PORT=4000 rescripts start",
-    "build:micro-app": "rescripts build",
-    "build:app": "REACT_APP_AS_APP=true rescripts build",
-    "test": "rescripts test"
+    "build:micro-app": "SKIP_PREFLIGHT_CHECK=true rescripts build",
+    "build:app": "SKIP_PREFLIGHT_CHECK=true REACT_APP_AS_APP=true rescripts build",
+    "test": "SKIP_PREFLIGHT_CHECK=true rescripts test"
   },
   "eslintConfig": {
     "extends": [
