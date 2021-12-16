@@ -2,6 +2,61 @@
 
 更高抽象的企业微信 JS-SDK 封装。
 
+## 安装
+
+```shell
+npm i wecom-sidebar-jssdk
+```
+
+## 简单上手
+
+```ts
+import {invoke, asyncCall, call} from 'wecom-sidebar-jssdk';
+
+try {
+  // 获取外部联系人 external_user_id
+  const res1 = await invoke('getCurExternalContact');
+  console.log(res1.userId);
+
+  // 拍照或从手机相册中选图接口
+  const res2 = await asyncCall('chooseImage');
+  console.log(res2.localIds);
+
+  // 设置监听
+  call('onNetworkStatusChange', (res) => {
+    console.log(res.isConnected)
+    console.log(res.networkType)
+  })
+} catch (e) {
+  console.log(e.message);
+}
+
+// 支持原始调用方式
+wx.invoke('getCurExternalContact', {}, function (res) {
+  if (res.err_msg == "getCurExternalContact:ok") {
+    userId = res.userId; //返回当前外部联系人userId
+  } else {
+    //错误处理
+  }
+});
+```
+
+## 为什么
+
+原始的侧边栏 JS-SDK 无论在调用体验、开发体验、TS 支持等都非常不好，所以希望再做一层抽象与封装来提升开发体验。
+
+提供以下功能：
+
+![](./screenshots/functions.png)
+
+## TS Ready
+
+所有 API 都配有 TypeScript 支持！并且对原来的 `wx` 变量也做了大量 TS 类型支持：
+
+![](./screenshots/tips.png)
+
+所以说，即使下面我提供的 API 都不能帮到你，那至少这个库的 TS 也能给你一个很好的开发体验。
+
 ## 工具 API
 
 主要提供两个 API，负责获取用户身份以及初始化 JS-SDK。
@@ -11,6 +66,8 @@
 检查是否需要重定向，并自动获取 `userId`，缓存到 Cookie 的函数。
 
 ```ts
+import {checkRedirect} from 'wecom-sidebar-jssdk';
+
 // 侧边栏配置
 const config = {
   // 在 https://work.weixin.qq.com/wework_admin/frame#profile 这里可以找到
@@ -24,7 +81,7 @@ const fetchUserId = async (code: string): Promise<string> => {
   const response = await axios.request({
     method: 'GET',
     url: '/user',
-    params: { code }
+    params: {code}
   });
   return response.data.userId;
 }
@@ -42,7 +99,7 @@ await checkRedirect(config, fetchUserId)
 初始化 JS-SDK 的重要方法！自动包含了 `wx.config`，`wx.ready`，`wx.agentConfig` 的逻辑，并支持 Promise 异步，帮你一步到位初始化。
 
 ```ts
-import {SignRes} from "wecom-sidebar-jssdk";
+import {initSdk, SignRes} from "wecom-sidebar-jssdk";
 
 // 侧边栏配置
 const config = {
@@ -115,6 +172,8 @@ wx.checkJsApi({
 现在可以这么写：
 
 ```js
+import {asyncCall} from 'wecom-sidebar-jssdk';
+
 const res = await asyncCall({
   jsApiList: ['chooseImage']
 })
@@ -148,6 +207,8 @@ wx.startRecord();
 现在写法：
 
 ```js
+import {call} from 'wecom-sidebar-jssdk';
+
 call('startRecord');
 ```
 
@@ -177,6 +238,8 @@ wx.invoke('getCurExternalContact', {}, function (res) {
 现在写法：
 
 ```js
+import {invoke} from 'wecom-sidebar-jssdk';
+
 const res = await invoke('getCurExternalContact', {});
 
 console.log(res.userId);
@@ -197,8 +260,7 @@ console.log(res.userId);
 
 使用 `wecom-sidebar-jssdk` 后可直接在浏览器上直接调试你的应用。
 
-它的实现原理是将前面的一些调用方法都自动屏蔽了，也可以说是 Mock 掉。由于 SDK 是可以 Mock 的，
-那么我也留了一个入口给大家，可以 Mock `wx.fn` 和 `wx.invoke` 的不同返回值。
+它的实现原理是将前面的一些调用方法都自动屏蔽了，也可以说是 Mock 掉。由于 SDK 是可以 Mock 的， 那么我也留了一个入口给大家，可以 Mock `wx.fn` 和 `wx.invoke` 的不同返回值。
 
 下面都是一些相关的 Setter 操作。
 
@@ -214,6 +276,8 @@ console.log(res.userId);
 `setIsMock` 只作为一种手动 toggle Mock 环境的方法：
 
 ```js
+import {setIsMock} from 'wecom-sidebar-jssdk';
+
 setIsMock(true) // 开启 Mock 环境
 
 setIsMock(false) // 关闭 Mock 环境
@@ -226,6 +290,8 @@ setIsMock(false) // 关闭 Mock 环境
 在 Mock 环境下，自动读取 `window._mockUserId` 值，此方法为设置该值：
 
 ```js
+import {setMockUserId} from 'wecom-sidebar-jssdk';
+
 setMockUserId('xiaoming');
 ```
 
@@ -233,12 +299,13 @@ setMockUserId('xiaoming');
 
 ### setWxResMock
 
-在 Mock 环境下，当调用 `asyncCall` 或 `call` 时，自动 `window._wxResMock` 里拿 mock value 作为返回值，如果 mock function，
-则会直接执行并返回。
+在 Mock 环境下，当调用 `asyncCall` 或 `call` 时，自动 `window._wxResMock` 里拿 mock value 作为返回值，如果 mock function， 则会直接执行并返回。
 
 使用示例：
 
 ```js
+import {setWxResMock} from 'wecom-sidebar-jssdk';
+
 wxResMock = {
   agentConfig: () => {
     console.log('mock agent config')
@@ -257,12 +324,13 @@ const ok = call('startRecord') // 返回 'ok'
 
 ### setInvokeResMock
 
-在 Mock 环境下，当调用 `invoke` 时，自动 `window._invokeResMock` 里拿 mock value 作为返回值，如果为 mock function，
-则会直接执行并返回。
+在 Mock 环境下，当调用 `invoke` 时，自动 `window._invokeResMock` 里拿 mock value 作为返回值，如果为 mock function， 则会直接执行并返回。
 
 使用示例：
 
 ```js
+import {setInvokeResMock} from 'wecom-sidebar-jssdk';
+
 const invokeResMock = {
   'getCurExternalContact': {
     userId: 'xxx'
@@ -273,7 +341,7 @@ const invokeResMock = {
 setInvokeResMock(invokeResMock) // 设置 mock
 
 await invoke('getCurExternalContact'); // 返回 { userId: 'xxx' }
-await invoke('openUserProfile', { ... }) // 返回 'yyy'
+await invoke('openUserProfile', {...}) // 返回 'yyy'
 ```
 
 当然你直接 `window._invokeResMock = { ... }` 来设置也是可以的。
