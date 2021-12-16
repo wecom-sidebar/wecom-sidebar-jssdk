@@ -26,8 +26,10 @@
   -->
   <title>企业微信侧边栏开发模板</title>
 
+  <% if (process.env.REACT_APP_AS_APP === 'true') { %>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js"></script>
+  <% } %>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
