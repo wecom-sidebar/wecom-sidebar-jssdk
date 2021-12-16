@@ -407,3 +407,19 @@ await invoke('openUserProfile', {...}) // 返回 'yyy'
 ```
 
 当然你直接 `window._invokeResMock = { ... }` 来设置也是可以的。
+
+## 应用示例
+
+这在 `./example` 这个文件夹里，还有一个 example 供大家使用，里面列举了大部分的 API 调用，方便大家尝试这些 API。
+
+![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f3dc28b48fd4a04870b9210d9d5278e~tplv-k3u1fbpfcp-watermark.image?)
+
+```shell
+cd example
+
+npm i wecom-sidebar-jssdk
+
+npm run start
+```
+
+具体怎么在浏览器以及侧边栏上调试，可以看 README.md
