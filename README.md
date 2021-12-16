@@ -51,7 +51,21 @@ wx.invoke('getCurExternalContact', {}, function (res) {
 
 ## TS Ready
 
-所有 API 都配有 TypeScript 支持！并且对原来的 `wx` 变量也做了大量 TS 类型支持：
+所有 API 都配有 TypeScript 支持！
+
+比如，提供 `apiName` 的 TS 类型支持：
+
+![](./screenshots/name-tips.png);
+
+提供入参的 TS 类型支持。
+
+![](./screenshots/param-tips.png);
+
+提供返回值的 TS 类型支持。
+
+![](./screenshots/return-tips.png);
+
+同时，对原来的 `wx` 变量也做了大量 TS 类型支持：
 
 ![](./screenshots/tips.png)
 

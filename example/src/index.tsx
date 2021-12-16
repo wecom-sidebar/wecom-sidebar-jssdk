@@ -24,7 +24,6 @@ const AppWrapper = (
 )
 
 const render = async (props: any) => {
-  console.log('yyy');
   const {container} = props;
 
   if (container) {
