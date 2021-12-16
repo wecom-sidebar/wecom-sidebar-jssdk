@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.12...v0.0.13) (2021-12-16)
+
+
+### Features
+
+* 使用下划线来命名全局变量 ([d9f20bf](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/d9f20bfb9fe013f2fb16c026d8c060a655e03fec))
+* 完善小库说明部分 ([27f6361](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/27f636104e1b4ceba21c871740777171a9eb88c2))
+* 导出更多 TS 类型 ([59e9d06](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/59e9d065a8cadeb5ea42246a439be352eb751de2))
+* 更新 mock 的说明 ([e07575f](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/e07575f53c2b8b85871a5b11ec32ad7456bc2104))
+* 更新 README.md ([83a3037](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/83a3037797110024af08d898754040319263dbc0))
+* 更新功能图 ([796a0de](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/796a0de5d541d9480872195c423a92824672da70))
+* 更新简单上手部分 ([21f06f4](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/21f06f4d348ca7f420659a410c6269b3da0d273a))
+* 更新类型 ([4d260b5](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/4d260b5435cd9a1023a7067f581e159b7e178790))
+* 添加 mock 的设置 ([57403d0](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/57403d0e9a253a30e50d5f3e40796e016e4e19e6))
+* 添加下划线 ([095b60c](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/095b60c235af9806c68ae89d9ae3062a3088ea20))
+* 添加提示 ([19ccf39](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/19ccf39f03ac7759ff09d11a793ea6208fad2e4b))
+* 添加更多 TS 支持的截图 ([b528fc7](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/b528fc7c0ecdc0f9d85294e40f08e32467588bd3))
+
+
+### Bug Fixes
+
+* 修复 TS 类型报错 ([8b0bb81](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/8b0bb81ca7ed301406f99aa5ad897644e407728d))
+
 ### [0.0.12](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.11...v0.0.12) (2021-12-14)
 
 
