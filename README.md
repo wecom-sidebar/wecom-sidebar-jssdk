@@ -93,7 +93,7 @@ checkRedirect(config, fetchUserId)
 
 提供以下功能：
 
-![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/functions.png)
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/666903d9236a4e93899a11ab9b3111d1~tplv-k3u1fbpfcp-watermark.image?)
 
 ## TS Ready
 
@@ -101,19 +101,19 @@ checkRedirect(config, fetchUserId)
 
 比如，提供 `apiName` 的 TS 类型支持：
 
-![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/name-tips.png);
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b5b3c79faed433780bbf69d20c4cf25~tplv-k3u1fbpfcp-watermark.image?)
 
 提供入参的 TS 类型支持。
 
-![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/param-tips.png);
+![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f333fa09c400408d9073639538d503f7~tplv-k3u1fbpfcp-watermark.image?)
 
 提供返回值的 TS 类型支持。
 
-![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/return-tips.png);
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/432803517e654857b9166ba49dfda5df~tplv-k3u1fbpfcp-watermark.image?)
 
 同时，对原来的 `wx` 变量也做了大量 TS 类型支持：
 
-![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/tips.png)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f53027daf2134d828c01bd9c6d804267~tplv-k3u1fbpfcp-watermark.image?)
 
 所以说，即使下面我提供的 API 都不能帮到你，那至少这个库的 TS 也能给你一个很好的开发体验。
 
@@ -123,7 +123,7 @@ checkRedirect(config, fetchUserId)
 
 ### checkRedirect
 
-检查是否需要重定向，并自动获取 `userId`，缓存到 Cookie 的函数。
+该函数用于检查是否需要重定向，并自动获取 `userId`，缓存到 Cookie 的函数。
 
 ```ts
 import {checkRedirect} from 'wecom-sidebar-jssdk';
@@ -215,7 +215,7 @@ await initSdk(config, fetchSignatures);
 
 ### asyncCall
 
-异步 `wx.fn` 的函数。比如：
+封装了 `wx.fn` 的调用方式，使得可以直接异步 Promise 调用，比如：
 
 以前你这么写：
 
@@ -256,7 +256,7 @@ console.log(res.checkResult);
 
 ### call
 
-同步 `wx.fn` 的调用方式。因为某些接口调用是不需要异步等结果的，所以这个 API 和原来的 `wx.fn` 调用没什么差别，只不过会有更好的 TS 提示：
+同步调用 `wx.fn` 的封装方法。因为某些接口调用是不需要异步等结果的，所以这个 API 和原来的 `wx.fn` 调用没什么差别，只不过会有更好的 TS 提示：
 
 以前写法：
 
@@ -281,7 +281,7 @@ call('startRecord');
 
 ### invoke
 
-调用 `wx.invoke('xxx')` 方法，这应该是用的最多的一种方法了，可以直接使用 async/await 的 Promise 来异步调用。
+对 `wx.invoke('xxx')` 调用方法进行封装，可以直接使用 async/await 的方式来异步调用。
 
 以前写法：
 
