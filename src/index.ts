@@ -9,13 +9,16 @@ import { AsyncCallMap } from "./types";
 import { CallMap } from "./types";
 import { Config, GetSignatures, GetUserId } from "./types";
 import { InvokeMap } from "./types";
-import { InvokeResMock, WxResMock } from "./types";
+import { initMock } from "./apis/mock";
 
-// 所有 API
+// 所有 API 列表
 export const wxApis = _wxApis;
 
 // 重要类型
 export * from "./types";
+
+// Mock Api
+export * from "./apis/mock";
 
 // 异步调用 wx.fn
 export const asyncCall = async <K extends keyof AsyncCallMap>(
@@ -90,27 +93,4 @@ export const invoke = async <K extends keyof InvokeMap>(
   return mockRes;
 };
 
-// 手动设置是否是 Mock 环境
-export const setIsMock = (isMock: boolean) => {
-  // 根据外部判断是否为 mock 环境
-  const isWindowMock = window._isMock === true;
-  // 根据宿主环境判断是否要 mock
-  const isHostMock = !navigator.userAgent.toLowerCase().includes("wxwork");
-  // 全局设置 Mock，自动判断 Mock，手动 Mock
-  return isWindowMock || isHostMock || isMock;
-};
-
-// 手动设置 mock 的 userId
-export const setMockUserId = (mockUserId: string) => {
-  window._mockUserId = mockUserId;
-};
-
-// 设置 wx.fn 的 mock 结果
-export const setWxResMock = (wxResMock: WxResMock) => {
-  window._wxResMock = wxResMock;
-};
-
-// 设置 wx.invoke 的 mock 结果
-export const setInvokeResMock = (invokeResMock: InvokeResMock) => {
-  window._invokeResMock = invokeResMock;
-};
+initMock();

@@ -6,11 +6,15 @@ import {ConfigProvider, message} from 'antd';
 import {checkRedirect, initSdk} from "wecom-sidebar-jssdk";
 import App from './App'
 import {fetchSignatures, fetchUserId} from './http'
-import config from './_config'
+import config from './config'
 
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/lib/locale/zh_CN';
 import 'antd/dist/antd.css';
+import {mockSdk} from "./mock";
+
+// 自动 Mock Sdk
+mockSdk();
 
 // 作为微应用时不能使用 VConsole
 if (!window.__POWERED_BY_QIANKUN__) {
