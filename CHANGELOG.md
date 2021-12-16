@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.16...v0.0.17) (2021-12-16)
+
+
+### Features
+
+* 添加 SKIP_PREFLIGHT_CHECK=true 变量 ([ce35b1b](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/ce35b1b00ad670df1dfa3b42a374c46dac29e270))
+* 添加应用示例 ([08f7ecc](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/08f7eccc25119a2c6d9abe20a53ec9e98654681d))
+* 添加微应用脚本 ([eaab2d6](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/commit/eaab2d6b6296e372270e884df3cf0e669c0a1959))
+
 ### [0.0.16](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/compare/v0.0.15...v0.0.16) (2021-12-16)
 
 
