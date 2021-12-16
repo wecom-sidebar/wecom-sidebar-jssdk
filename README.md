@@ -93,7 +93,7 @@ checkRedirect(config, fetchUserId)
 
 提供以下功能：
 
-![](./screenshots/functions.png)
+![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/functions.png)
 
 ## TS Ready
 
@@ -101,19 +101,19 @@ checkRedirect(config, fetchUserId)
 
 比如，提供 `apiName` 的 TS 类型支持：
 
-![](./screenshots/name-tips.png);
+![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/name-tips.png);
 
 提供入参的 TS 类型支持。
 
-![](./screenshots/param-tips.png);
+![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/param-tips.png);
 
 提供返回值的 TS 类型支持。
 
-![](./screenshots/return-tips.png);
+![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/return-tips.png);
 
 同时，对原来的 `wx` 变量也做了大量 TS 类型支持：
 
-![](./screenshots/tips.png)
+![](https://github.com/wecom-sidebar/wecom-sidebar-jssdk/raw/main/screenshots/tips.png)
 
 所以说，即使下面我提供的 API 都不能帮到你，那至少这个库的 TS 也能给你一个很好的开发体验。
 
@@ -202,7 +202,7 @@ await initSdk(config, fetchSignatures);
 | 参数              | 描述                                            | 类型                                 |
 |-----------------|-----------------------------------------------|------------------------------------|
 | config          | 侧边栏基础配置                                       | { corpId: string; agentId: string} |
-| fetchSignatures | 远程获取企业和应用的生成的签名以及 `noncwStr` 和 `timetamp` 的方法 | () => Promise<SignRes> }           |
+| fetchSignatures | 远程获取企业和应用的生成的签名以及 `noncwStr` 和 `timetamp` 的方法 | () => Promise<SignRes>             |
 
 此方法最好放在 `checkRedirect` 之后调用，不然会出现 `WxBridge` 找不到的问题。
 
