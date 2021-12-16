@@ -10,6 +10,9 @@ npm i wecom-sidebar-jssdk
 
 ## 简单上手
 
+上手代码需要用到后端调用 [企业微信服务端 API](https://work.weixin.qq.com/api/doc/90001/90143/91201) 的能力，
+如果你还没有做好的后端，可以直接使用 [我做好的 Express Demo](https://github.com/wecom-sidebar/wecom-sidebar-express-tpl) 来提供接口。
+
 ```ts
 import {checkRedirect, initSdk, invoke, asyncCall, call, SignRes} from 'wecom-sidebar-jssdk';
 
@@ -21,11 +24,11 @@ const config = {
   agentId: 'yyy'
 }
 
-// 获取签名
+// 获取签名接口（需要后端生成）
 export const fetchSignatures = async (): Promise<SignRes> => {
   const response = await axios.request<SignRes>({
     method: 'GET',
-    url: '/signatures',
+    url: '/api/qywx-utils/signatures',
     params: {
       url: window.location.href
     }
@@ -34,11 +37,11 @@ export const fetchSignatures = async (): Promise<SignRes> => {
   return response.data;
 }
 
-// code 换取用户身份
+// code 换取用户身份（需要后端调用企微服务端 API）
 const fetchUserId = async (code: string): Promise<string> => {
   const response = await axios.request({
     method: 'GET',
-    url: '/user',
+    url: '/api/qywx-proxy/user/getuserinfo',
     params: {code}
   });
   return response.data.userId;
