@@ -93,7 +93,7 @@ const render = () => {
 
 checkRedirect(config, fetchUserId)
   .then(() => initSdk(config, fetchSignatures))
-  .then(() => testApi)
+  .then(() => testApi())
   .then(() => console.log(Cookies.get('userId')))
   .catch(() => console.error('JS-SDK 初始化失败'))
   .finally(() => render());
