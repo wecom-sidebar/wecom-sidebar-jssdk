@@ -20,6 +20,13 @@ npm i wecom-sidebar-jssdk
 
 [文档在此](https://wecom-sidebar.github.io/)
 
+注意：此库只封装了 `wx` 的调用方法，JS-SDk 还是需要大家自己在 `index.html` 中引入：
+
+```html
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="https://open.work.weixin.qq.com/wwopen/js/jwxwork-1.0.0.js"></script>
+```
+
 上手代码需要用到后端调用 [企业微信服务端 API](https://work.weixin.qq.com/api/doc/90001/90143/91201) 的能力，
 如果你还没有做好的后端，可以直接使用 [我做好的 Express Demo](https://github.com/wecom-sidebar/wecom-sidebar-express-tpl) 来提供接口。
 
